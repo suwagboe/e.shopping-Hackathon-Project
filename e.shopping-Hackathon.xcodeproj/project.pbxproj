@@ -81,12 +81,9 @@
 		55D16E10244DF82C00865482 /* e.shopping-Hackathon */ = {
 			isa = PBXGroup;
 			children = (
-				55D16E11244DF82C00865482 /* AppDelegate.swift */,
-				55D16E13244DF82C00865482 /* SceneDelegate.swift */,
 				55D16E15244DF82C00865482 /* ViewController.swift */,
 				55D16E17244DF82C00865482 /* Main.storyboard */,
-				55D16E1D244DF82F00865482 /* Assets.xcassets */,
-				55D16E1F244DF82F00865482 /* LaunchScreen.storyboard */,
+				55D16E36244DF8E600865482 /* supporting files */,
 				55D16E22244DF82F00865482 /* Info.plist */,
 				55D16E1A244DF82C00865482 /* e_shopping_Hackathon.xcdatamodeld */,
 			);
@@ -100,6 +97,17 @@
 				55D16E2D244DF82F00865482 /* Info.plist */,
 			);
 			path = "e.shopping-HackathonTests";
+			sourceTree = "<group>";
+		};
+		55D16E36244DF8E600865482 /* supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				55D16E11244DF82C00865482 /* AppDelegate.swift */,
+				55D16E13244DF82C00865482 /* SceneDelegate.swift */,
+				55D16E1D244DF82F00865482 /* Assets.xcassets */,
+				55D16E1F244DF82F00865482 /* LaunchScreen.storyboard */,
+			);
+			path = "supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
