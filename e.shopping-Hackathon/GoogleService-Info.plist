@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>589671875932-fd6rrseh876bqc688i8hng24vn6hskhh.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.589671875932-fd6rrseh876bqc688i8hng24vn6hskhh</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDKgaWSz4d4z2tB6nBYMmblcmim9XUHO4k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>589671875932</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>pursuitful.e-shopping-Hackathon</string>
+	<key>PROJECT_ID</key>
+	<string>fair-and-square</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fair-and-square.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:589671875932:ios:67f694dbe0fa233e612d99</string>
+	<key>DATABASE_URL</key>
+	<string>https://fair-and-square.firebaseio.com</string>
+</dict>
+</plist>
