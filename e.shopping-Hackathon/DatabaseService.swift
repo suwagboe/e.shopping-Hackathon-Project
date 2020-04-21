@@ -28,8 +28,8 @@ class DatabaseService {
         }
     }
     
-    public func updateCompany(company: Company, companyId: String, completion: @escaping (Result<Bool, Error>) -> ()){
-        db.collection(DatabaseService.companiesCollection).document(companyId).updateData(["alertMsg": company.alertMsg, "companyImgURL": company.companyImgURL, "desc": company.desc]) { (error) in
+    public func updateCompany(company: Company, completion: @escaping (Result<Bool, Error>) -> ()){
+        db.collection(DatabaseService.companiesCollection).document(company.companyId).updateData(["alertMsg": company.alertMsg, "companyImgURL": company.companyImgURL, "desc": company.desc]) { (error) in
             if let error = error {
                 completion(.failure(error))
             } else {
