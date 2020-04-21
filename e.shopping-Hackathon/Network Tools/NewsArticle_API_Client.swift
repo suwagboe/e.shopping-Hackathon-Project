@@ -9,7 +9,7 @@
 import Foundation
 
 struct NYTTopStoriesAPIClient {
-  static func fetchCompanyArticles(for search: String, completion: @escaping (Result<[Article], AppError>) -> ()) {
+  static func fetchCompanyArticles(for search: String, completion: @escaping (Result<TopStories, AppError>) -> ()) {
     let articleSearchEndpoint = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=\(search)&api-key=\(Config.apiKey)"
     guard let url = URL(string: articleSearchEndpoint) else {
       completion(.failure(.badURL(articleSearchEndpoint)))
@@ -23,7 +23,7 @@ struct NYTTopStoriesAPIClient {
       case .success(let data):
         do {
           let topStories = try JSONDecoder().decode(TopStories.self, from: data)
-          completion(.success(topStories.results))
+            completion(.success(topStories))
         } catch {
           completion(.failure(.decodingError(error)))
         }
