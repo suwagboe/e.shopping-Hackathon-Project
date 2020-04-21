@@ -24,6 +24,7 @@
 		C12E8A18244F5DCD00897F13 /* watchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E8A17244F5DCD00897F13 /* watchListView.swift */; };
 		C12E8A1A244F5DF000897F13 /* WatchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E8A19244F5DF000897F13 /* WatchListController.swift */; };
 		C12E8A1C244F6B2000897F13 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E8A1B244F6B2000897F13 /* NetworkHelper.swift */; };
+		F18E5750244F72F00033ED02 /* CompanyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E574F244F72F00033ED02 /* CompanyModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		C12E8A17244F5DCD00897F13 /* watchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = watchListView.swift; sourceTree = "<group>"; };
 		C12E8A19244F5DF000897F13 /* WatchListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListController.swift; sourceTree = "<group>"; };
 		C12E8A1B244F6B2000897F13 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		F18E574F244F72F00033ED02 /* CompanyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyModel.swift; sourceTree = "<group>"; };
 		FFFD35E782F7C756D682C5C4 /* Pods_e_shopping_Hackathon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_e_shopping_Hackathon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -123,6 +125,7 @@
 				55D16E22244DF82F00865482 /* Info.plist */,
 				55D16E37244F430800865482 /* GoogleService-Info.plist */,
 				55D16E1A244DF82C00865482 /* e_shopping_Hackathon.xcdatamodeld */,
+				F18E574F244F72F00033ED02 /* CompanyModel.swift */,
 			);
 			path = "e.shopping-Hackathon";
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				55D16E12244DF82C00865482 /* AppDelegate.swift in Sources */,
 				55D16E3C244F46C600865482 /* SearchController.swift in Sources */,
 				C12E8A1C244F6B2000897F13 /* NetworkHelper.swift in Sources */,
+				F18E5750244F72F00033ED02 /* CompanyModel.swift in Sources */,
 				55D16E42244F47B900865482 /* SearchView.swift in Sources */,
 				C12E8A1A244F5DF000897F13 /* WatchListController.swift in Sources */,
 				55D16E14244DF82C00865482 /* SceneDelegate.swift in Sources */,
