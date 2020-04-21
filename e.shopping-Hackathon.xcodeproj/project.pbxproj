@@ -23,6 +23,7 @@
 		B7284DFF35D3E65D335B614E /* Pods_e_shopping_HackathonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45BEE8ADE5B4CD5395A1FC55 /* Pods_e_shopping_HackathonTests.framework */; };
 		C12E8A18244F5DCD00897F13 /* watchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E8A17244F5DCD00897F13 /* watchListView.swift */; };
 		C12E8A1A244F5DF000897F13 /* WatchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E8A19244F5DF000897F13 /* WatchListController.swift */; };
+		C12E8A1C244F6B2000897F13 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E8A1B244F6B2000897F13 /* NetworkHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		9F6A5DF445D89B22FD6A2E99 /* Pods-e.shopping-Hackathon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-e.shopping-Hackathon.release.xcconfig"; path = "Target Support Files/Pods-e.shopping-Hackathon/Pods-e.shopping-Hackathon.release.xcconfig"; sourceTree = "<group>"; };
 		C12E8A17244F5DCD00897F13 /* watchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = watchListView.swift; sourceTree = "<group>"; };
 		C12E8A19244F5DF000897F13 /* WatchListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListController.swift; sourceTree = "<group>"; };
+		C12E8A1B244F6B2000897F13 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		FFFD35E782F7C756D682C5C4 /* Pods_e_shopping_Hackathon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_e_shopping_Hackathon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,7 @@
 		55D16E10244DF82C00865482 /* e.shopping-Hackathon */ = {
 			isa = PBXGroup;
 			children = (
+				C12E8A1D244F6B2800897F13 /* Network Tools */,
 				55D16E3F244F478C00865482 /* Views */,
 				55D16E40244F479300865482 /* Controllers */,
 				55D16E36244DF8E600865482 /* supporting files */,
@@ -174,6 +177,14 @@
 				00F54160CD7458F118088A0F /* Pods-e.shopping-HackathonTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C12E8A1D244F6B2800897F13 /* Network Tools */ = {
+			isa = PBXGroup;
+			children = (
+				C12E8A1B244F6B2000897F13 /* NetworkHelper.swift */,
+			);
+			path = "Network Tools";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +359,7 @@
 				55D16E44244F47C700865482 /* DetailView.swift in Sources */,
 				55D16E12244DF82C00865482 /* AppDelegate.swift in Sources */,
 				55D16E3C244F46C600865482 /* SearchController.swift in Sources */,
+				C12E8A1C244F6B2000897F13 /* NetworkHelper.swift in Sources */,
 				55D16E42244F47B900865482 /* SearchView.swift in Sources */,
 				C12E8A1A244F5DF000897F13 /* WatchListController.swift in Sources */,
 				55D16E14244DF82C00865482 /* SceneDelegate.swift in Sources */,
