@@ -19,8 +19,8 @@ class TabController: UITabBarController {
             
         }()
         
-        private lazy var detail: DetailViewController = {
-             let controller = DetailViewController()
+        private lazy var watch: WatchListController = {
+             let controller = WatchListController()
              controller.tabBarItem = UITabBarItem(title: "Detail", image: UIImage(systemName: "gear"), tag: 1)
             
              return controller
@@ -32,7 +32,7 @@ class TabController: UITabBarController {
             
             // MARK: this is where you embeed the controller
             viewControllers = [UINavigationController(rootViewController: mainVC)
-                , UINavigationController(rootViewController: detail)]
+                , UINavigationController(rootViewController: watch)]
         }
         
         
