@@ -18,8 +18,12 @@ class SearchController: UIViewController {
       
     }
     
+     override func loadView() {
+       view = searchController
+     }
+    
     private func configureController(){
-        view = searchController
+     
        searchController.collection.register(UINib(nibName: "SearchCell", bundle: nil), forCellWithReuseIdentifier: "searchCell")
          
          
@@ -47,7 +51,6 @@ extension SearchController: UICollectionViewDataSource {
         }
 
         return cell
-        
     }
     
     
@@ -55,6 +58,25 @@ extension SearchController: UICollectionViewDataSource {
 
 extension SearchController: UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+             let maxSize: CGSize = UIScreen.main.bounds.size
+          let spacingBtw: CGFloat = 10.0
+          let numOfItems: CGFloat = 2.0
+          let itemHeight: CGFloat = maxSize.height * 0.45
+          
+      
+          let maxWidth = maxSize.width
+          
+            let totalSpacing: CGFloat = numOfItems * CGFloat(spacingBtw)
+          
+              let itemWidth = (maxWidth - totalSpacing) / numOfItems
+          
+             return CGSize(width: itemWidth, height: itemHeight)
+           }
     
+    
+           func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+             return UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
+           }
     
 }
