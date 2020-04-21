@@ -12,7 +12,8 @@ class WatchListViewCell: UITableViewCell {
     
     public lazy var companyImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "photo")
+        imageView.image = UIImage(systemName: "house")
+        imageView.tintColor = .darkGray
         return imageView
     }()
     
@@ -20,7 +21,8 @@ class WatchListViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Company Name"
         label.numberOfLines = 3
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+        //label.textColor = .darkGray
         return label
     }()
     
@@ -62,7 +64,7 @@ class WatchListViewCell: UITableViewCell {
             companyImage.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             companyImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 1),
             companyImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1),
-            companyImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6) // companyImage.heightAnchor)
+            companyImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.55) // companyImage.heightAnchor)
         ])
     }
     
@@ -72,7 +74,7 @@ class WatchListViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             companyNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 70),
             companyNameLabel.leadingAnchor.constraint(equalTo: companyImage.trailingAnchor, constant: 2),
-            companyNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 5)
+            companyNameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -5)
         ])
     }
     
