@@ -110,8 +110,8 @@
 		55D16E10244DF82C00865482 /* e.shopping-Hackathon */ = {
 			isa = PBXGroup;
 			children = (
-				55D16E40244F479300865482 /* Controllers */,
 				55D16E3F244F478C00865482 /* Views */,
+				55D16E40244F479300865482 /* Controllers */,
 				55D16E36244DF8E600865482 /* supporting files */,
 				55D16E22244DF82F00865482 /* Info.plist */,
 				55D16E37244F430800865482 /* GoogleService-Info.plist */,
