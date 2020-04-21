@@ -26,6 +26,7 @@
 		C12E8A1C244F6B2000897F13 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E8A1B244F6B2000897F13 /* NetworkHelper.swift */; };
 		F18E5750244F72F00033ED02 /* CompanyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E574F244F72F00033ED02 /* CompanyModel.swift */; };
 		F18E5752244F7EAC0033ED02 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E5751244F7EAC0033ED02 /* DatabaseService.swift */; };
+		F18E5754244F85C00033ED02 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E5753244F85C00033ED02 /* StorageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		C12E8A1B244F6B2000897F13 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		F18E574F244F72F00033ED02 /* CompanyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyModel.swift; sourceTree = "<group>"; };
 		F18E5751244F7EAC0033ED02 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		F18E5753244F85C00033ED02 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		FFFD35E782F7C756D682C5C4 /* Pods_e_shopping_Hackathon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_e_shopping_Hackathon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -129,6 +131,7 @@
 				55D16E1A244DF82C00865482 /* e_shopping_Hackathon.xcdatamodeld */,
 				F18E574F244F72F00033ED02 /* CompanyModel.swift */,
 				F18E5751244F7EAC0033ED02 /* DatabaseService.swift */,
+				F18E5753244F85C00033ED02 /* StorageService.swift */,
 			);
 			path = "e.shopping-Hackathon";
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				55D16E1C244DF82C00865482 /* e_shopping_Hackathon.xcdatamodeld in Sources */,
 				55D16E3E244F46D800865482 /* DetailViewController.swift in Sources */,
 				C12E8A18244F5DCD00897F13 /* watchListView.swift in Sources */,
+				F18E5754244F85C00033ED02 /* StorageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
