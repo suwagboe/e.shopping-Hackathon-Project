@@ -1,0 +1,6 @@
+framework module Pods_e_shopping_Hackathon {
+  umbrella header "Pods-e.shopping-Hackathon-umbrella.h"
+
+  export *
+  module * { export * }
+}
