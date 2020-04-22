@@ -5,7 +5,6 @@
 //  Created by Pursuit on 4/21/20.
 //  Copyright © 2020 Pursuit. All rights reserved.
 //
-
 import UIKit
 import FirebaseFirestore
 import DataPersistence
@@ -43,7 +42,6 @@ class SearchController: UIViewController {
     
     private func configureController(){
        searchController.collection.register(UINib(nibName: "SearchCell", bundle: nil), forCellWithReuseIdentifier: "searchCell")
-         
         
         searchController.searchBar.delegate = self
         searchController.collection.delegate = self
@@ -77,15 +75,43 @@ class SearchController: UIViewController {
 extension SearchController: UISearchBarDelegate {
     
     // once the user clicks returned.
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//
+//        // unwrapping the text so that way there is something in it
+//        guard let searchText = searchBar.text else {
+//            print("the searchText is not working")
+//            return
+//        }
+//
+//        guard !searchText.isEmpty else {
+//                   loadCompanyData(for: searchText)
+//                   // if it is empty then reload all of the articles.
+//                   return
+//               }
+//
+//        loadCompanyData(for: searchText)
+//        navigationItem.title = searchText
+//
+//        searchBar.resignFirstResponder()
+//    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // unwrapping the text so that way there is something in it
-        guard let searchText = searchBar.text else {
-            print("the searchText is not working")
-            return
-        }
-        loadCompanyData(for: searchText)
-        navigationItem.title = searchText
+               guard let searchText = searchBar.text else {
+                   print("the searchText is not working")
+                   return
+               }
+               
+               guard !searchText.isEmpty else {
+                          loadCompanyData(for: searchText)
+                          // if it is empty then reload all of the articles.
+                          return
+                      }
+               
+               loadCompanyData(for: searchText)
+               navigationItem.title = searchText
+               
+               searchBar.resignFirstResponder()
     }
     
 }
@@ -103,7 +129,7 @@ extension SearchController: UICollectionViewDataSource {
         
         let selecteCompany = companyList[indexPath.row]
 
-        cell.configureCell(selecteCompany)
+        cell.configureCell(with: selecteCompany)
         
         return cell
     }
@@ -135,6 +161,13 @@ extension SearchController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // segue to detailView and add the dependency injection
+        
+        let company = companyList[indexPath.row]
+        
+        let dvc = DetailViewController(dataPersistence, company: company)
+        
+        navigationController?.pushViewController(dvc, animated: true)
+        
     }
     
 }
