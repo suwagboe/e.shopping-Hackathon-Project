@@ -15,6 +15,7 @@ class SearchController: UIViewController {
     private var companyList = [Company]() {
         didSet {
             searchController.collection.reloadData()
+            emptyViewConfig()
         }
     }
     
@@ -47,10 +48,10 @@ class SearchController: UIViewController {
         searchController.searchBar.delegate = self
         searchController.collection.delegate = self
         searchController.collection.dataSource = self
-        config()
+        emptyViewConfig()
     }
     
-    private func config(){
+    private func emptyViewConfig(){
         if searchController.searchBar.text?.isEmpty == true {
                         searchController.collection.backgroundView = EmptyView(title: "Welcome To Fair + Square", message: "Please search a for a company so we can get this party started!!")
                     } else {
@@ -66,9 +67,7 @@ class SearchController: UIViewController {
                 fatalError("couldn't load the companies from database inside of the search controller")
             case .success(let companies):
                 self?.companyList = companies.filter { $0.name.lowercased().contains(enteredText)}
-                
-                  //companyList = companyList.filter { $0.name.lowercased().contains(searchText) }
-            }
+                }
         })
     }
     
@@ -79,50 +78,18 @@ class SearchController: UIViewController {
 
 extension SearchController: UISearchBarDelegate {
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-          // doesnt hit the api like the other one
-          // and will change as the text is entered.
-          
-          print(searchText)
-          
-          guard !searchText.isEmpty else {
-              //loadCompanyData()
-              // if it is empty then reload all of the articles.
-              return
-          }
-          // filter articles based on search text...
-          
-         // companyList = newsArticles.filter { $0.title.lowercased().contains(searchText.lowercased()) } // if it is == the it will look for EXACT matches
-        
-        //companyList = companyList
-        companyList = companyList.filter { $0.name.lowercased().contains(searchText.lowercased()) }
-        navigationItem.title = searchText
-
-        
-      }
-    
+    // once the user clicks returned.
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-//         guard !searchText.isEmpty else {
-//                     loadCompanyData()
-//                     // if it is empty then reload all of the articles.
-//                     return
-//                 }()
-        
+
+        // unwrapping the text so that way there is something in it
         guard let searchText = searchBar.text else {
             print("the searchText is not working")
             return
         }
         
-        
         loadCompanyData(for: searchText)
-        
         navigationItem.title = searchText
-
-        
     }
-    
-    
     
 }
 
