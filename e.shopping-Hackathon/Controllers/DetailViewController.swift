@@ -7,26 +7,38 @@
 //
 
 import UIKit
+import DataPersistence
 
 class DetailViewController: UIViewController {
-    
-    private var company: Company
-    
-    init(_ company: Company) {
+
+
+    private var dataPersistence: DataPersistence<Company>
+    init(_ dataPersistence: DataPersistence<Company>, company: Company) {
         self.company = company
+        self.dataPersistence = dataPersistence
         super.init(nibName: nil, bundle: nil)
     }
-    
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("init(coder:) has not been initialized")
     }
+
+    private var company: Company?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemPink
     }
+
+    @objc private func addCompanyToWatchList() {
+        guard let watchedCompany = company else {
+            return
+        }
+        do {
+            try dataPersistence.createItem(watchedCompany)
+        } catch {
+            showAlert(title: "Error", message: "Failed to save company to watch list: \(error)")
+        }
+    }
     
-
-
-
+    
 }
