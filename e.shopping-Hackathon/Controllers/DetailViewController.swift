@@ -23,6 +23,7 @@ class DetailViewController: UIViewController {
     }
 
     private var company: Company?
+    private var companyScore: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,11 @@ class DetailViewController: UIViewController {
             showAlert(title: "Error", message: "Failed to save company to watch list: \(error)")
         }
     }
-    
+    private func getCompanyRating() {
+        guard let companyToBeRated = company else {
+            return
+        }
+        companyScore = company?.getCompanyRating(for: companyToBeRated)
+    }
     
 }

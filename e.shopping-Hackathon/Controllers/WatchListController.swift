@@ -25,12 +25,10 @@ class WatchListController: UIViewController {
     }
     
     private var companies = [Company]() {
-
-
         didSet {
             watchListView.tableView.reloadData()
             if companies.isEmpty {
-                watchListView.tableView.backgroundView = EmptyView(title: "Watch List", message: "There are currently no companies on your watch list. Search for a company you are interested in and add it to your search list.")
+                watchListView.tableView.backgroundView = EmptyView(title: "Watch List", message: "There are currently no companies on your watch list. Search for a company you are interested in and add it to your watch list.")
             } else {
                 watchListView.tableView.backgroundView = nil
             }
@@ -50,6 +48,7 @@ class WatchListController: UIViewController {
         watchListView.tableView.delegate = self
         
         watchListView.tableView.register(WatchListViewCell.self, forCellReuseIdentifier: "watchListCell")
+        fetchCompanies()
     }
 
   
@@ -65,8 +64,11 @@ class WatchListController: UIViewController {
 
     
     private func fetchCompanies() {
-        
-    
+        do {
+            companies = try dataPersistence.loadItems()
+        } catch {
+            print("error fetching companies \(error)")
+        }
     }
     
 }
@@ -74,7 +76,7 @@ class WatchListController: UIViewController {
 
 extension WatchListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return companies.count
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -83,7 +85,7 @@ extension WatchListController: UITableViewDataSource, UITableViewDelegate {
         }
         // TODO: initiate once the company model is complete
         let company = companies[indexPath.row]
-        cell.configureCell()
+        cell.configureCell(company: company)
         cell.backgroundColor = UIColor(white: 0.2, alpha: 0.3)
         return cell
     }
