@@ -21,11 +21,14 @@ struct Docs: Codable & Equatable {
     let docs: [Article]
 }
 struct Article: Codable & Equatable {
-
     let abstract: String
+    let webURL: String
+    let publicationDate: String
     let multimedia: [Multimedia]?
     private enum CodingKeys: String, CodingKey {
         case abstract
+        case webURL = "web_url"
+        case publicationDate = "pub_date"
         case multimedia
     }
 }
