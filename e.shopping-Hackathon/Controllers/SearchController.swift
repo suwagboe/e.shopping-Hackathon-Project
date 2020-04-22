@@ -74,32 +74,10 @@ class SearchController: UIViewController {
 
 extension SearchController: UISearchBarDelegate {
     
-    // once the user clicks returned.
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//
-//        // unwrapping the text so that way there is something in it
-//        guard let searchText = searchBar.text else {
-//            print("the searchText is not working")
-//            return
-//        }
-//
-//        guard !searchText.isEmpty else {
-//                   loadCompanyData(for: searchText)
-//                   // if it is empty then reload all of the articles.
-//                   return
-//               }
-//
-//        loadCompanyData(for: searchText)
-//        navigationItem.title = searchText
-//
-//        searchBar.resignFirstResponder()
-//    }
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // unwrapping the text so that way there is something in it
                guard let searchText = searchBar.text else {
                    print("the searchText is not working")
-
                    return
                }
                
