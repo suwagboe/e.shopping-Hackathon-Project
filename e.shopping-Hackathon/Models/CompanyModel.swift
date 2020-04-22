@@ -16,7 +16,17 @@ struct Company: Codable & Equatable {
     var politicsRating: Bool
     var sustainabilityRating: Bool
     
-//    public func getCompanyRating:
+    public func getCompanyRating(for company: Company) -> Int {
+        let ratingCategories = [company.animalsRating, company.peopleRating, company.sustainabilityRating, company.environmentRating, company.politicsRating]
+        var score = 0
+        for rating in ratingCategories {
+            if rating == true {
+                score += 1
+            }
+        }
+        return score
+    }
+    
 }
 
 extension Company{
