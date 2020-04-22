@@ -18,6 +18,7 @@ class SearchController: UIViewController {
         didSet {
             searchController.collection.reloadData()
         }
+    }
     private let searchController = SearchView()
 
     private var dataPersistence: DataPersistence<Company>
