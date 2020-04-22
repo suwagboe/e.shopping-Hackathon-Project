@@ -15,6 +15,7 @@ struct Company: Codable & Equatable {
     var peopleRating: Bool
     var politicsRating: Bool
     var sustainabilityRating: Bool
+    let ratingValue: Int
     
     public func getCompanyRating(for company: Company) -> Int {
         let ratingCategories = [company.animalsRating, company.peopleRating, company.sustainabilityRating, company.environmentRating, company.politicsRating]
