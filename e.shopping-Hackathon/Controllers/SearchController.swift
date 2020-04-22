@@ -46,12 +46,23 @@ class SearchController: UIViewController {
     
     
     private func configureController(){
-        loadCompanyData()
+        
        searchController.collection.register(UINib(nibName: "SearchCell", bundle: nil), forCellWithReuseIdentifier: "searchCell")
          
         searchController.searchBar.delegate = self
         searchController.collection.delegate = self
         searchController.collection.dataSource = self
+        config()
+    }
+    
+    private func config(){
+        if searchController.searchBar.text?.isEmpty == true {
+                        searchController.collection.backgroundView = EmptyView(title: "Welcome To Fair + Square", message: "Please search a for a company so we can get this party started ")
+                    } else {
+            loadCompanyData()
+        searchController.collection.backgroundView = nil
+                               
+        }
     }
     
     private func loadCompanyData() {
@@ -73,11 +84,35 @@ class SearchController: UIViewController {
 
 extension SearchController: UISearchBarDelegate {
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+          // doesnt hit the api like the other one
+          // and will change as the text is entered.
+          
+          print(searchText)
+          
+          guard !searchText.isEmpty else {
+              loadCompanyData()
+              // if it is empty then reload all of the articles.
+              return
+          }
+          // filter articles based on search text...
+          
+         // companyList = newsArticles.filter { $0.title.lowercased().contains(searchText.lowercased()) } // if it is == the it will look for EXACT matches
+        
+        //companyList = companyList
+        companyList = companyList.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+        navigationItem.title = searchText
+
+        
+      }
+    
+    
+    
 }
 
 extension SearchController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return companyList.count
+        return companyList.count // 9
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -118,5 +153,9 @@ extension SearchController: UICollectionViewDelegateFlowLayout {
            func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
              return UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
            }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // segue to detailView and add the dependency injection
+    }
     
 }

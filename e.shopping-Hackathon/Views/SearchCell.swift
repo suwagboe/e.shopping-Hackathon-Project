@@ -21,7 +21,7 @@ class SearchCell: UICollectionViewCell {
     
     public func configureCell(_ with: Company){
         
-        companyLabel.text = with.name
+     //   companyLabel.text = with.name
        
        // scoreImage.image =
         

@@ -17,7 +17,7 @@ class SearchView: UIView {
           layout.itemSize = CGSize(width: 400, height: 400)
           //CGRect.zero means 0 everything
           let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-          cv.backgroundColor = .systemTeal
+          cv.backgroundColor = .systemBackground
           
           return cv
       }()
