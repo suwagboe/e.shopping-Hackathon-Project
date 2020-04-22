@@ -1,21 +1,16 @@
-//
-//  CompanyModel.swift
-//  e.shopping-Hackathon
-//
-//  Created by Bienbenido Angeles on 4/21/20.
-//  Copyright © 2020 Pursuit. All rights reserved.
-//
+
 
 import Foundation
 import Firebase
 
-struct Company {
+struct Company: Codable & Equatable {
     let name: String
     let id:Int
     let companyId: String //doc Id
     var desc: String
     var alertMsg: String
-    var companyImgURL:String
+    var companyImgURL: String
+    
 }
 
 extension Company{

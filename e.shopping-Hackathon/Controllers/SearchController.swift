@@ -8,29 +8,25 @@
 
 import UIKit
 import FirebaseFirestore
-//import DataPersistence
-
+import DataPersistence
 
 class SearchController: UIViewController {
     
-    //private var dataPersistence: DataPersistence<Company>
-     //  init(_ dataPersistence: DataPersistence<Company>) {
-        //   self.dataPersistence = dataPersistence
-         //  super.init(nibName: nil, bundle: nil)
-      // }
-     //  required init?(coder: NSCoder) {
-        //   fatalError("init(coder:) has not been initialized")
-      // }
-    
        private var company: Company?
-    
-    // instances
-         private let searchController = SearchView()
     
     private var companyList = [Company]() {
         didSet {
             searchController.collection.reloadData()
         }
+    private let searchController = SearchView()
+
+    private var dataPersistence: DataPersistence<Company>
+    init(_ dataPersistence: DataPersistence<Company>) {
+        self.dataPersistence = dataPersistence
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been initialized")
     }
     
     override func viewDidLoad() {
