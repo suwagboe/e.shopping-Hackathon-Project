@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 import FirebaseFirestore
 
 class DatabaseService {
@@ -16,6 +17,8 @@ class DatabaseService {
     private let db = Firestore.firestore()
     
     private init(){}
+    
+    static let shared = DatabaseService()
         
     public func readCompanies(completion: @escaping (Result<[Company], Error>) -> ()){
         db.collection(DatabaseService.companiesCollection).getDocuments { (snapshot, error) in
