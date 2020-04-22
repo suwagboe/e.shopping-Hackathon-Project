@@ -7,11 +7,21 @@
 //
 
 import UIKit
+import DataPersistence
 
 class SearchController: UIViewController {
     
     private let searchController = SearchView()
 
+    private var dataPersistence: DataPersistence<Company>
+    init(_ dataPersistence: DataPersistence<Company>) {
+        self.dataPersistence = dataPersistence
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been initialized")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureController()
