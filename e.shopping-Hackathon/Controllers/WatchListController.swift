@@ -26,6 +26,7 @@ class WatchListController: UIViewController {
     
     private var companies = [Company]() {
 
+
         didSet {
             watchListView.tableView.reloadData()
             if companies.isEmpty {
@@ -60,6 +61,9 @@ class WatchListController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
+
+
+    
     private func fetchCompanies() {
         
     
