@@ -41,7 +41,8 @@ extension Company{
         self.animalsRating = dictionary["animalsRating"] as? Bool ?? false
         self.environmentRating = dictionary["environmentRating"] as? Bool ?? false
         self.peopleRating = dictionary["peopleRating"] as? Bool ?? false
-        self.politicsRating = dictionary[""] as? Bool ?? false
-        self.sustainabilityRating = dictionary[""] as? Bool ?? false
+        self.politicsRating = dictionary["politicsRating"] as? Bool ?? false
+        self.sustainabilityRating = dictionary["sustainabilityRating"] as? Bool ?? false
+        self.ratingValue = dictionary["ratingValue"] as? Int ?? 0
     }
 }
