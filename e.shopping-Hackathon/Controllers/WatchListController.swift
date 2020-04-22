@@ -36,16 +36,16 @@ class WatchListController: UIViewController {
         watchListView.tableView.register(WatchListViewCell.self, forCellReuseIdentifier: "watchListCell")
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let detailVC = segue.destination as? DetailViewController, let indexPath = watchListView.tableView.indexPathForSelectedRow else {
-            fatalError("Failed to get indexPath and detailViewController")
-        }
-        
-        // TODO: initiate once the company model is complete
-        //let theCompany = companies[indexPath.row]
-       // detailVC.company = theCompany
-        
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard let detailVC = segue.destination as? DetailViewController, let indexPath = watchListView.tableView.indexPathForSelectedRow else {
+//            fatalError("Failed to get indexPath and detailViewController")
+//        }
+//
+//        // TODO: initiate once the company model is complete
+//        //let theCompany = companies[indexPath.row]
+//       // detailVC.company = theCompany
+//
+//    }
     
     private func fetchCompanies() {
         
