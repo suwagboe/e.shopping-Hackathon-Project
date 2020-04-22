@@ -24,11 +24,10 @@ class WatchListController: UIViewController {
     }
     
     private var companies = [Company]() {
-
         didSet {
             watchListView.tableView.reloadData()
             if companies.isEmpty {
-                watchListView.tableView.backgroundView = EmptyView(title: "Watch List", message: "There are currently no companies on your watch list. Search for a company you are interested in and add it to your search list.")
+                watchListView.tableView.backgroundView = EmptyView(title: "Watch List", message: "There are currently no companies on your watch list. Search for a company you are interested in and add it to your watch list.")
             } else {
                 watchListView.tableView.backgroundView = nil
             }
@@ -48,6 +47,7 @@ class WatchListController: UIViewController {
         watchListView.tableView.delegate = self
         
         watchListView.tableView.register(WatchListViewCell.self, forCellReuseIdentifier: "watchListCell")
+        fetchCompanies()
     }
   
     override func viewWillAppear(_ animated: Bool) {
@@ -59,8 +59,11 @@ class WatchListController: UIViewController {
     }
 
     private func fetchCompanies() {
-        
-    
+        do {
+            companies = try dataPersistence.loadItems()
+        } catch {
+            print("error fetching companies \(error)")
+        }
     }
     
 }
