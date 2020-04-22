@@ -7,20 +7,22 @@
 //
 
 import UIKit
+import DataPersistence
 
 class TabController: UITabBarController {
 
+    private var dataPersistence = DataPersistence<Company>(filename: "watchedCompanies.plist")
+
         private lazy var mainVC: SearchController = {
-            
-            let controller = SearchController()
+            let controller = SearchController(dataPersistence)
             controller.tabBarItem = UITabBarItem(title: "Search Controller", image: UIImage(systemName: "eyeglasses"), tag: 0)
-       
+            
             return controller
             
         }()
         
         private lazy var watch: WatchListController = {
-             let controller = WatchListController()
+             let controller = WatchListController(dataPersistence)
              controller.tabBarItem = UITabBarItem(title: "Detail", image: UIImage(systemName: "gear"), tag: 1)
             
              return controller
