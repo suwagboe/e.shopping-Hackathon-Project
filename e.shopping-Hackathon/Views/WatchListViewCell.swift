@@ -26,15 +26,11 @@ class WatchListViewCell: UITableViewCell {
         return label
     }()
     
-    public lazy var ratingLabel: UILabel = {
-        let label = UILabel()
-        label.text = "RATING"
-        label.numberOfLines = 1
-        label.font = UIFont.systemFont(ofSize: 16, weight: .black)
-        label.textAlignment = .center
-        label.textColor = .systemRed
-        return label
-    }()
+    public lazy var ratingImage: UIImageView = {
+          let imageView = UIImageView()
+        imageView.image = UIImage(named: "FourRating")
+          return imageView
+      }()
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -50,7 +46,7 @@ class WatchListViewCell: UITableViewCell {
     private func commonInit() {
         setupCompanyImage()
         setupCompanyNameLabel()
-        setupRatingLabel()
+        setupRatingImage()
     }
     
     public func configureCell(){
@@ -72,19 +68,21 @@ class WatchListViewCell: UITableViewCell {
         addSubview(companyNameLabel)
         companyNameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            companyNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 70),
+            companyNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 30),
             companyNameLabel.leadingAnchor.constraint(equalTo: companyImage.trailingAnchor, constant: 2),
             companyNameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -5)
         ])
     }
     
-    private func setupRatingLabel(){
-        addSubview(ratingLabel)
-        ratingLabel.translatesAutoresizingMaskIntoConstraints = false
+    private func setupRatingImage(){
+        addSubview(ratingImage)
+        ratingImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            ratingLabel.topAnchor.constraint(equalTo: companyNameLabel.bottomAnchor, constant: 8),
-            ratingLabel.leadingAnchor.constraint(equalTo: companyNameLabel.leadingAnchor),
-            ratingLabel.trailingAnchor.constraint(equalTo: companyNameLabel.trailingAnchor)
+            ratingImage.topAnchor.constraint(equalTo: companyNameLabel.bottomAnchor, constant: 10),
+            ratingImage.leadingAnchor.constraint(equalTo: companyImage.trailingAnchor, constant: 10),
+            ratingImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
+            ratingImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.23)
+            
         ])
     }
 }
