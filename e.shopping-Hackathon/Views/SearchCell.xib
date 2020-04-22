@@ -28,47 +28,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="company label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWp-Pj-J92">
-                                <rect key="frame" x="30" y="50" width="130" height="21"/>
+                                <rect key="frame" x="30" y="50" width="300" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="YRg-98-OJi"/>
+                                    <constraint firstAttribute="width" constant="300" id="YRg-98-OJi"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="score label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1i7-7e-0uj">
-                                <rect key="frame" x="50" y="101" width="90" height="21"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThreeRating" translatesAutoresizingMaskIntoConstraints="NO" id="371-3S-s9o">
+                                <rect key="frame" x="50" y="117" width="200" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="qJE-y6-x6z"/>
+                                    <constraint firstAttribute="width" constant="200" id="5MU-Ok-awR"/>
+                                    <constraint firstAttribute="height" constant="200" id="6LQ-eE-tuB"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFR-TF-XBQ">
-                                <rect key="frame" x="512" y="50" width="44" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="hLd-4Q-fX3"/>
-                                    <constraint firstAttribute="height" constant="44" id="spK-se-mbb"/>
-                                </constraints>
-                                <state key="normal" image="ellipsis.circle.fill" catalog="system">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qWp-Pj-J92" firstAttribute="top" secondItem="z0k-vx-7MP" secondAttribute="top" constant="50" id="8co-mY-Jph"/>
                             <constraint firstItem="qWp-Pj-J92" firstAttribute="leading" secondItem="z0k-vx-7MP" secondAttribute="leading" constant="30" id="BUv-37-qyh"/>
-                            <constraint firstItem="IFR-TF-XBQ" firstAttribute="top" secondItem="z0k-vx-7MP" secondAttribute="top" constant="50" id="Xql-Tq-wUc"/>
-                            <constraint firstItem="1i7-7e-0uj" firstAttribute="leading" secondItem="z0k-vx-7MP" secondAttribute="leading" constant="50" id="aBJ-8Z-jVk"/>
-                            <constraint firstAttribute="trailing" secondItem="IFR-TF-XBQ" secondAttribute="trailing" constant="44" id="eEK-1w-RyH"/>
-                            <constraint firstItem="1i7-7e-0uj" firstAttribute="top" secondItem="qWp-Pj-J92" secondAttribute="bottom" constant="30" id="ouf-HR-B3L"/>
+                            <constraint firstItem="371-3S-s9o" firstAttribute="top" secondItem="qWp-Pj-J92" secondAttribute="bottom" constant="25" id="jag-ie-nKz"/>
+                            <constraint firstItem="371-3S-s9o" firstAttribute="leading" secondItem="z0k-vx-7MP" secondAttribute="leading" constant="50" id="vEP-Sv-jrh"/>
                         </constraints>
                         <connections>
                             <outlet property="companyLabel" destination="qWp-Pj-J92" id="IjA-5F-SdO"/>
                             <outlet property="image" destination="B4G-qa-JTx" id="aTb-UC-dZH"/>
-                            <outlet property="scoreLabel" destination="1i7-7e-0uj" id="6io-Gf-5rV"/>
+                            <outlet property="scoreImage" destination="371-3S-s9o" id="taG-Ke-0Ll"/>
                         </connections>
                     </view>
                 </subviews>
@@ -92,7 +78,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="ThreeRating" width="1024" height="1024"/>
         <image name="bag.fill" catalog="system" width="64" height="64"/>
-        <image name="ellipsis.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>
