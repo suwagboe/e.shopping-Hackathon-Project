@@ -35,7 +35,11 @@
 		F18E5750244F72F00033ED02 /* CompanyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E574F244F72F00033ED02 /* CompanyModel.swift */; };
 		F18E5752244F7EAC0033ED02 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E5751244F7EAC0033ED02 /* DatabaseService.swift */; };
 		F18E5754244F85C00033ED02 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E5753244F85C00033ED02 /* StorageService.swift */; };
+<<<<<<< Updated upstream
 		F18E57582450E39F0033ED02 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E57572450E39F0033ED02 /* Config.swift */; };
+=======
+		F18E575A2450E7C40033ED02 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E57592450E7C40033ED02 /* Config.swift */; };
+>>>>>>> Stashed changes
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +87,11 @@
 		F18E574F244F72F00033ED02 /* CompanyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyModel.swift; sourceTree = "<group>"; };
 		F18E5751244F7EAC0033ED02 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		F18E5753244F85C00033ED02 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		F18E57572450E39F0033ED02 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+=======
+		F18E57592450E7C40033ED02 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 		FFFD35E782F7C756D682C5C4 /* Pods_e_shopping_Hackathon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_e_shopping_Hackathon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -166,7 +174,11 @@
 		55D16E36244DF8E600865482 /* supporting_files */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< Updated upstream
 				F18E57572450E39F0033ED02 /* Config.swift */,
+=======
+				F18E57592450E7C40033ED02 /* Config.swift */,
+>>>>>>> Stashed changes
 				55D16E11244DF82C00865482 /* AppDelegate.swift */,
 				55D16E13244DF82C00865482 /* SceneDelegate.swift */,
 				55D16E1D244DF82F00865482 /* Assets.xcassets */,
@@ -422,6 +434,7 @@
 				F18E5752244F7EAC0033ED02 /* DatabaseService.swift in Sources */,
 				55D16E1C244DF82C00865482 /* e_shopping_Hackathon.xcdatamodeld in Sources */,
 				55D16E3E244F46D800865482 /* DetailViewController.swift in Sources */,
+				F18E575A2450E7C40033ED02 /* Config.swift in Sources */,
 				C12E8A18244F5DCD00897F13 /* watchListView.swift in Sources */,
 				F18E57582450E39F0033ED02 /* Config.swift in Sources */,
 				C18961EB24507E6C00D53AC3 /* UIView+Extension.swift in Sources */,
