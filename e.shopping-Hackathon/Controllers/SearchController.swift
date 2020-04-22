@@ -99,6 +99,7 @@ extension SearchController: UISearchBarDelegate {
         // unwrapping the text so that way there is something in it
                guard let searchText = searchBar.text else {
                    print("the searchText is not working")
+
                    return
                }
                
