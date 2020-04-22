@@ -10,6 +10,8 @@ import UIKit
 
 class WatchListViewCell: UITableViewCell {
     
+    private var currentCompany: Company!
+    
     public lazy var companyImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "house")
@@ -49,8 +51,8 @@ class WatchListViewCell: UITableViewCell {
         setupRatingImage()
     }
     
+
         public func configureCell(company: Company) {
-//        public func configureCell() {
             var companyScore = 0
             companyScore = company.getCompanyRating(for: company)
             companyNameLabel.text = "\(company.name)"
@@ -75,6 +77,7 @@ class WatchListViewCell: UITableViewCell {
                 ratingImage.image = UIImage(systemName: "􀒊")
             }
         }
+
     
     private func setupCompanyImage() {
         addSubview(companyImage)
