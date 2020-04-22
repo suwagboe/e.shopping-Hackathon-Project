@@ -21,8 +21,14 @@ class DetailViewController: UIViewController {
         fatalError("init(coder:) has not been initialized")
     }
     
+    private let detailView = DetailView()
+
     private var company: Company?
     private var companyScore: Int?
+    
+    override func loadView() {
+         view = detailView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
