@@ -71,8 +71,6 @@ class SearchController: UIViewController {
         })
     }
     
-    
-    
   
 }
 
@@ -86,7 +84,6 @@ extension SearchController: UISearchBarDelegate {
             print("the searchText is not working")
             return
         }
-        
         loadCompanyData(for: searchText)
         navigationItem.title = searchText
     }
@@ -118,16 +115,15 @@ extension SearchController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
              let maxSize: CGSize = UIScreen.main.bounds.size
-          let spacingBtw: CGFloat = 10.0
-          let numOfItems: CGFloat = 2.0
+         // let spacingBtw: CGFloat = 10.0
+        //  let numOfItems: CGFloat = 2.0
           let itemHeight: CGFloat = maxSize.height * 0.45
           
-      
-          let maxWidth = maxSize.width
+        let maxWidth = maxSize.width
           
-            let totalSpacing: CGFloat = numOfItems * CGFloat(spacingBtw)
+         //   let totalSpacing: CGFloat = numOfItems * CGFloat(spacingBtw)
           
-              let itemWidth = (maxWidth - totalSpacing) / numOfItems
+        let itemWidth = maxWidth * 0.95 
           
              return CGSize(width: itemWidth, height: itemHeight)
            }
