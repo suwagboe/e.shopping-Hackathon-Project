@@ -15,8 +15,11 @@ class WatchListController: UIViewController {
     // TODO: Replace Array with Company Model
     private var companies = [Company]() {
         didSet {
-            DispatchQueue.main.async {
-                self.watchListView.tableView.reloadData()
+            watchListView.tableView.reloadData()
+            if companies.isEmpty {
+                watchListView.tableView.backgroundView = EmptyView(title: "Watch List", message: "There are currently no companies on your watch list. Search for a company you are interested in and add it to your search list.")
+            } else {
+                watchListView.tableView.backgroundView = nil
             }
         }
     }
@@ -46,6 +49,7 @@ class WatchListController: UIViewController {
 //       // detailVC.company = theCompany
 //
 //    }
+
     
     private func fetchCompanies() {
         
@@ -62,8 +66,8 @@ extension WatchListController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "watchListCell", for: indexPath) as? WatchListViewCell else {
-                   fatalError("Couldn't dequeue the CalendarCell")
-               }
+            fatalError("Couldn't dequeue the CalendarCell")
+        }
         // TODO: initiate once the company model is complete
         let company = companies[indexPath.row]
         cell.configureCell()
