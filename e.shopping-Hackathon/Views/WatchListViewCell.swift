@@ -32,7 +32,6 @@ class WatchListViewCell: UITableViewCell {
           return imageView
       }()
     
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         commonInit()
@@ -49,8 +48,33 @@ class WatchListViewCell: UITableViewCell {
         setupRatingImage()
     }
     
-    public func configureCell(){
-        // TODO: complete once the model is ready
+//    public func configureCell(company: Company) {
+    public func configureCell() {
+        var companyScore = 0
+        // TODO: Reinstate code once we have company data
+//        companyScore = company.getCompanyRating(company: company)
+//        companyNameLabel.text = "\(company.name)"
+        getRatingImage(score: companyScore)
+        companyNameLabel.text = "Company Name"
+    }
+    
+    private func getRatingImage(score: Int) {
+        switch score {
+        case 0:
+            ratingImage.image = UIImage(named: "ZeroRating")
+        case 1:
+            ratingImage.image = UIImage(named: "OneRating")
+        case 2:
+            ratingImage.image = UIImage(named: "TwoRating")
+        case 3:
+            ratingImage.image = UIImage(named: "ThreeRating")
+        case 4:
+            ratingImage.image = UIImage(named: "FourRating")
+        case 5:
+            ratingImage.image = UIImage(named: "FiveRating")
+        default:
+            ratingImage.image = UIImage(systemName: "􀒊")
+        }
     }
     
     private func setupCompanyImage() {

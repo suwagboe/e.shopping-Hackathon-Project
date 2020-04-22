@@ -68,7 +68,8 @@ class WatchListController: UIViewController {
 
 extension WatchListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return companies.count
+//        return companies.count
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -76,7 +77,7 @@ extension WatchListController: UITableViewDataSource, UITableViewDelegate {
             fatalError("Couldn't dequeue the CalendarCell")
         }
         // TODO: initiate once the company model is complete
-        let company = companies[indexPath.row]
+//        let company = companies[indexPath.row]
 
         cell.configureCell()
         cell.backgroundColor = UIColor(white: 0.2, alpha: 0.3)
