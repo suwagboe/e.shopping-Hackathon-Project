@@ -3,14 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		51D09B14E6104D02C5FEE484 /* Pods_e_shopping_Hackathon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFD35E782F7C756D682C5C4 /* Pods_e_shopping_Hackathon.framework */; };
 		556D3229244F73A80052CEAD /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D3228244F73A80052CEAD /* SearchCell.swift */; };
 		556D322B244F84CD0052CEAD /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 556D322A244F84CD0052CEAD /* SearchCell.xib */; };
-		556D322D244F97ED0052CEAD /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D322C244F97ED0052CEAD /* Config.swift */; };
 		55D16E12244DF82C00865482 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D16E11244DF82C00865482 /* AppDelegate.swift */; };
 		55D16E14244DF82C00865482 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D16E13244DF82C00865482 /* SceneDelegate.swift */; };
 		55D16E1C244DF82C00865482 /* e_shopping_Hackathon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55D16E1A244DF82C00865482 /* e_shopping_Hackathon.xcdatamodeld */; };
@@ -30,6 +29,9 @@
 		C12E8A1C244F6B2000897F13 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E8A1B244F6B2000897F13 /* NetworkHelper.swift */; };
 		C12E8A24244F771300897F13 /* NewsArticle_API_Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E8A23244F771300897F13 /* NewsArticle_API_Client.swift */; };
 		C12E8A26244F774000897F13 /* NewsArticle_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E8A25244F774000897F13 /* NewsArticle_Model.swift */; };
+		C155E148244FA65000E8C402 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = C155E147244FA65000E8C402 /* Config.swift */; };
+		C155E14B244FE26C00E8C402 /* DataPersistence in Frameworks */ = {isa = PBXBuildFile; productRef = C155E14A244FE26C00E8C402 /* DataPersistence */; };
+		C18961EB24507E6C00D53AC3 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18961EA24507E6C00D53AC3 /* UIView+Extension.swift */; };
 		F18E5750244F72F00033ED02 /* CompanyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E574F244F72F00033ED02 /* CompanyModel.swift */; };
 		F18E5752244F7EAC0033ED02 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E5751244F7EAC0033ED02 /* DatabaseService.swift */; };
 		F18E5754244F85C00033ED02 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E5753244F85C00033ED02 /* StorageService.swift */; };
@@ -51,7 +53,6 @@
 		45BEE8ADE5B4CD5395A1FC55 /* Pods_e_shopping_HackathonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_e_shopping_HackathonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		556D3228244F73A80052CEAD /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		556D322A244F84CD0052CEAD /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
-		556D322C244F97ED0052CEAD /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = ../Config.swift; sourceTree = "<group>"; };
 		55D16E0E244DF82C00865482 /* e.shopping-Hackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "e.shopping-Hackathon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D16E11244DF82C00865482 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55D16E13244DF82C00865482 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +77,8 @@
 		C12E8A1B244F6B2000897F13 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		C12E8A23244F771300897F13 /* NewsArticle_API_Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArticle_API_Client.swift; sourceTree = "<group>"; };
 		C12E8A25244F774000897F13 /* NewsArticle_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArticle_Model.swift; sourceTree = "<group>"; };
+		C155E147244FA65000E8C402 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		C18961EA24507E6C00D53AC3 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		F18E574F244F72F00033ED02 /* CompanyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyModel.swift; sourceTree = "<group>"; };
 		F18E5751244F7EAC0033ED02 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		F18E5753244F85C00033ED02 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
@@ -87,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C155E14B244FE26C00E8C402 /* DataPersistence in Frameworks */,
 				51D09B14E6104D02C5FEE484 /* Pods_e_shopping_Hackathon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,11 +142,10 @@
 				C12E8A27244F774700897F13 /* Models */,
 				55D16E3F244F478C00865482 /* Views */,
 				55D16E40244F479300865482 /* Controllers */,
-				55D16E36244DF8E600865482 /* supporting files */,
+				55D16E36244DF8E600865482 /* supporting_files */,
 				55D16E22244DF82F00865482 /* Info.plist */,
 				55D16E37244F430800865482 /* GoogleService-Info.plist */,
 				55D16E1A244DF82C00865482 /* e_shopping_Hackathon.xcdatamodeld */,
-				F18E574F244F72F00033ED02 /* CompanyModel.swift */,
 				F18E5751244F7EAC0033ED02 /* DatabaseService.swift */,
 				F18E5753244F85C00033ED02 /* StorageService.swift */,
 			);
@@ -158,16 +161,17 @@
 			path = "e.shopping-HackathonTests";
 			sourceTree = "<group>";
 		};
-		55D16E36244DF8E600865482 /* supporting files */ = {
+		55D16E36244DF8E600865482 /* supporting_files */ = {
 			isa = PBXGroup;
 			children = (
-				556D322C244F97ED0052CEAD /* Config.swift */,
+				C155E147244FA65000E8C402 /* Config.swift */,
 				55D16E11244DF82C00865482 /* AppDelegate.swift */,
 				55D16E13244DF82C00865482 /* SceneDelegate.swift */,
 				55D16E1D244DF82F00865482 /* Assets.xcassets */,
 				55D16E1F244DF82F00865482 /* LaunchScreen.storyboard */,
+				C18961EA24507E6C00D53AC3 /* UIView+Extension.swift */,
 			);
-			path = "supporting files";
+			path = supporting_files;
 			sourceTree = "<group>";
 		};
 		55D16E3F244F478C00865482 /* Views */ = {
@@ -218,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				C12E8A25244F774000897F13 /* NewsArticle_Model.swift */,
+				F18E574F244F72F00033ED02 /* CompanyModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -240,6 +245,9 @@
 			dependencies = (
 			);
 			name = "e.shopping-Hackathon";
+			packageProductDependencies = (
+				C155E14A244FE26C00E8C402 /* DataPersistence */,
+			);
 			productName = "e.shopping-Hackathon";
 			productReference = 55D16E0E244DF82C00865482 /* e.shopping-Hackathon.app */;
 			productType = "com.apple.product-type.application";
@@ -291,6 +299,9 @@
 				Base,
 			);
 			mainGroup = 55D16E05244DF82C00865482;
+			packageReferences = (
+				C155E149244FE26C00E8C402 /* XCRemoteSwiftPackageReference "DataPersistence" */,
+			);
 			productRefGroup = 55D16E0F244DF82C00865482 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -395,7 +406,6 @@
 				55D16E3A244F465800865482 /* TabController.swift in Sources */,
 				C12E8A26244F774000897F13 /* NewsArticle_Model.swift in Sources */,
 				55D16E44244F47C700865482 /* DetailView.swift in Sources */,
-				556D322D244F97ED0052CEAD /* Config.swift in Sources */,
 				55D16E12244DF82C00865482 /* AppDelegate.swift in Sources */,
 				55D16E3C244F46C600865482 /* SearchController.swift in Sources */,
 				556D3229244F73A80052CEAD /* SearchCell.swift in Sources */,
@@ -408,7 +418,9 @@
 				F18E5752244F7EAC0033ED02 /* DatabaseService.swift in Sources */,
 				55D16E1C244DF82C00865482 /* e_shopping_Hackathon.xcdatamodeld in Sources */,
 				55D16E3E244F46D800865482 /* DetailViewController.swift in Sources */,
+				C155E148244FA65000E8C402 /* Config.swift in Sources */,
 				C12E8A18244F5DCD00897F13 /* watchListView.swift in Sources */,
+				C18961EB24507E6C00D53AC3 /* UIView+Extension.swift in Sources */,
 				F18E5754244F85C00033ED02 /* StorageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -672,6 +684,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C155E149244FE26C00E8C402 /* XCRemoteSwiftPackageReference "DataPersistence" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alexpaul/DataPersistence";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C155E14A244FE26C00E8C402 /* DataPersistence */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C155E149244FE26C00E8C402 /* XCRemoteSwiftPackageReference "DataPersistence" */;
+			productName = DataPersistence;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		55D16E1A244DF82C00865482 /* e_shopping_Hackathon.xcdatamodeld */ = {

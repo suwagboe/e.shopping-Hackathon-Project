@@ -7,13 +7,22 @@
 //
 
 import UIKit
+import DataPersistence
 
 class WatchListController: UIViewController {
     
     private let watchListView = WatchListView()
     
-    // TODO: Replace Array with Company Model
-    private var companies = [Any]() {
+    private var dataPersistence: DataPersistence<Company>
+    init(_ dataPersistence: DataPersistence<Company>) {
+        self.dataPersistence = dataPersistence
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been initialized")
+    }
+    
+    private var companies = [Company]() {
         didSet {
             DispatchQueue.main.async {
                 self.watchListView.tableView.reloadData()
@@ -35,21 +44,16 @@ class WatchListController: UIViewController {
         
         watchListView.tableView.register(WatchListViewCell.self, forCellReuseIdentifier: "watchListCell")
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let detailVC = segue.destination as? DetailViewController, let indexPath = watchListView.tableView.indexPathForSelectedRow else {
-            fatalError("Failed to get indexPath and detailViewController")
-        }
-        
-        // TODO: initiate once the company model is complete
-        //let theCompany = companies[indexPath.row]
-       // detailVC.company = theCompany
-        
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+
     private func fetchCompanies() {
         
-        
+    
     }
     
 }
@@ -57,7 +61,7 @@ class WatchListController: UIViewController {
 
 extension WatchListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return companies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -65,7 +69,7 @@ extension WatchListController: UITableViewDataSource, UITableViewDelegate {
                    fatalError("Couldn't dequeue the CalendarCell")
                }
         // TODO: initiate once the company model is complete
-      //  let favComp = companies[indexPath.row]
+        let company = companies[indexPath.row]
         cell.configureCell()
         cell.backgroundColor = UIColor(white: 0.2, alpha: 0.3)
         return cell
@@ -73,6 +77,19 @@ extension WatchListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+         if editingStyle == .delete {
+             companies.remove(at: indexPath.row)
+             tableView.deleteRows(at: [indexPath], with: .fade)
+         }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let company = companies[indexPath.row]
+        let detailVC = DetailViewController(dataPersistence, company: company)
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+
 }
 
 
