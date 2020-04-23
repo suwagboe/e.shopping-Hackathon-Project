@@ -10,23 +10,98 @@ import UIKit
 
 class DetailView: UIView {
     
-    private lazy var companyLogoImageView: UIImageView = {
+    public lazy var categoryLabelStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [animalLabel,peopleLabel,politicsLabel,environmentLabel,sustainabilityLabel])
+        stack.axis = .vertical
+        stack.distribution = .fillEqually
+        stack.alignment = .trailing
+        stack.spacing = 5
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+
+    public lazy var animalLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Animals:"
+        return label
+    }()
+    public lazy var peopleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "People:"
+        return label
+    }()
+    public lazy var politicsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Politics:"
+        return label
+    }()
+    public lazy var environmentLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Environment:"
+        return label
+    }()
+    public lazy var sustainabilityLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Sustainability:"
+        return label
+    }()
+    public lazy var categoryBoolImageStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [ratingImage1, ratingImage2, ratingImage3, ratingImage4, ratingImage5])
+        stack.axis = .vertical
+        stack.distribution = .fillEqually
+        stack.alignment = .center
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    public lazy var ratingImage1: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(systemName: "questionmark.circle")
+        image.contentMode = .scaleAspectFill
+        return image
+    }()
+    public lazy var ratingImage2: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(systemName: "questionmark.circle")
+        image.contentMode = .scaleAspectFill
+        return image
+    }()
+    public lazy var ratingImage3: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(systemName: "questionmark.circle")
+        image.contentMode = .scaleAspectFill
+        return image
+    }()
+    public lazy var ratingImage4: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(systemName: "questionmark.circle")
+        image.contentMode = .scaleAspectFill
+        return image
+    }()
+    public lazy var ratingImage5: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(systemName: "questionmark.circle")
+        image.contentMode = .scaleAspectFill
+        return image
+    }()
+    public lazy var categoryBoolImageArr: [UIImageView] = [ratingImage1, ratingImage2, ratingImage3, ratingImage4, ratingImage5]
+    
+    public lazy var companyLogoImageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "heart")
         return image
     }()
-    private lazy var transparentView: UIView = {
+    public lazy var transparentView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
         view.alpha = 0.2
         return view
     }()
-    private lazy var companyNameLabel: UILabel = {
+    public lazy var companyNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Company Name"
         return label
     }()
-    private lazy var descriptionTextView: UITextView = {
+    public lazy var descriptionTextView: UITextView = {
         let field = UITextView()
         field.text = """
         TEXT TEXT TEXT TEXT TEXT TEXT
@@ -36,7 +111,7 @@ class DetailView: UIView {
 """
         return field
     }()
-    private lazy var contextButton: UIButton =  {
+    public lazy var contextButton: UIButton =  {
         let button = UIButton()
         button.setImage(UIImage(systemName: "ellipsis.circle"), for: .normal)
         button.frame.size = CGSize(width: 100, height: 100)
@@ -44,23 +119,27 @@ class DetailView: UIView {
          button.sizeToFit()
         return button
     }()
-    private lazy var scoreLabel: UILabel = {
+    public lazy var scoreLabel: UILabel = {
         let label = UILabel()
         label.text = "Score:"
         return label
     }()
-    private lazy var scoreImage: UIImageView = {
+    public lazy var scoreImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "ZeroRating")
         return image
     }()
 
     // This will be set behind the alert
-    private lazy var alertView: UIView = {
+    public lazy var alertView: UIView = {
         let view = UIView()
         return view
     }()
-    private lazy var newsArticlesButton: UIButton = {
+    public lazy var alertTextView: UITextField = {
+        let field = UITextField()
+        return field
+    }()
+    public lazy var newsArticlesButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "book.circle"), for: .normal)
         button.frame.size = CGSize(width: 100, height: 100)
@@ -89,6 +168,8 @@ class DetailView: UIView {
         contextButtonConstraints()
         scoreLabelConstraints()
         newsArticlesButtonConstraints()
+        labelStackConstraints()
+        imageStackConstraints()
     }
     //MARK:- Constraint Funcs
     private func companyLogoConstraints() {
@@ -157,6 +238,26 @@ class DetailView: UIView {
             newsArticlesButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             newsArticlesButton.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.20),
             newsArticlesButton.widthAnchor.constraint(equalTo: newsArticlesButton.heightAnchor)
+        ])
+    }
+    private func labelStackConstraints() {
+        addSubview(categoryLabelStack)
+        categoryLabelStack.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            categoryLabelStack.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor, constant: 20),
+            categoryLabelStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            categoryLabelStack.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.30),
+            categoryLabelStack.bottomAnchor.constraint(equalTo: newsArticlesButton.topAnchor, constant: -20)
+        ])
+    }
+    private func imageStackConstraints() {
+        addSubview(categoryBoolImageStack)
+        categoryBoolImageStack.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            categoryBoolImageStack.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor, constant: 20),
+            categoryBoolImageStack.leadingAnchor.constraint(equalTo: categoryLabelStack.trailingAnchor, constant: 20),
+            categoryBoolImageStack.bottomAnchor.constraint(equalTo: categoryLabelStack.bottomAnchor),
+            
         ])
     }
 }
