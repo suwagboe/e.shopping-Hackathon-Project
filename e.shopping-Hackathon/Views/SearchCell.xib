@@ -52,6 +52,7 @@
             </collectionViewCellContentView>
             <size key="customSize" width="473" height="287"/>
             <connections>
+                <outlet property="companyImage" destination="B4G-qa-JTx" id="Ioo-4h-Sev"/>
                 <outlet property="companyLabel" destination="qWp-Pj-J92" id="rBi-jr-uE9"/>
                 <outlet property="scoreImage" destination="371-3S-s9o" id="itb-KB-Z6x"/>
             </connections>

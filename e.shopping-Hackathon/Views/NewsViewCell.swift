@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ImageKit
+//import ImageKit
 
 class NewsViewCell: UITableViewCell {
 
