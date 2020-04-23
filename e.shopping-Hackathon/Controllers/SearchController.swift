@@ -5,21 +5,22 @@
 //  Created by Pursuit on 4/21/20.
 //  Copyright © 2020 Pursuit. All rights reserved.
 //
-
 import UIKit
 import FirebaseFirestore
 import DataPersistence
 
 class SearchController: UIViewController {
     
-       private var company: Company?
-    
     private var companyList = [Company]() {
         didSet {
             searchController.collection.reloadData()
+            emptyViewConfig()
         }
     }
+    
     private let searchController = SearchView()
+    
+    private var company: Company?
 
     private var dataPersistence: DataPersistence<Company>
     init(_ dataPersistence: DataPersistence<Company>) {
@@ -33,48 +34,40 @@ class SearchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureController()
-      
     }
     
      override func loadView() {
        view = searchController
      }
     
-    
-    
     private func configureController(){
-        
        searchController.collection.register(UINib(nibName: "SearchCell", bundle: nil), forCellWithReuseIdentifier: "searchCell")
-         
+        
         searchController.searchBar.delegate = self
         searchController.collection.delegate = self
         searchController.collection.dataSource = self
-        config()
+        emptyViewConfig()
     }
     
-    private func config(){
+    private func emptyViewConfig(){
         if searchController.searchBar.text?.isEmpty == true {
-                        searchController.collection.backgroundView = EmptyView(title: "Welcome To Fair + Square", message: "Please search a for a company so we can get this party started ")
+                        searchController.collection.backgroundView = EmptyView(title: "Welcome To Fair + Square", message: "Please search a for a company so we can get this party started!!")
                     } else {
-            loadCompanyData()
         searchController.collection.backgroundView = nil
-                               
         }
     }
     
-    private func loadCompanyData() {
+    private func loadCompanyData(for enteredText: String) {
         DatabaseService.shared.readCompanies(completion: { [weak self]
             (result) in
             switch result {
             case .failure:
                 fatalError("couldn't load the companies from database inside of the search controller")
             case .success(let companies):
-                self?.companyList = companies
-            }
+                self?.companyList = companies.filter { $0.name.lowercased().contains(enteredText)}
+                }
         })
     }
-    
-    
     
   
 }
@@ -82,28 +75,23 @@ class SearchController: UIViewController {
 extension SearchController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-          // doesnt hit the api like the other one
-          // and will change as the text is entered.
-          
-          print(searchText)
-          
-          guard !searchText.isEmpty else {
-              loadCompanyData()
-              // if it is empty then reload all of the articles.
-              return
-          }
-          // filter articles based on search text...
-          
-         // companyList = newsArticles.filter { $0.title.lowercased().contains(searchText.lowercased()) } // if it is == the it will look for EXACT matches
-        
-        //companyList = companyList
-        companyList = companyList.filter { $0.name.lowercased().contains(searchText.lowercased()) }
-        navigationItem.title = searchText
-
-        
-      }
-    
-    
+        // unwrapping the text so that way there is something in it
+               guard let searchText = searchBar.text else {
+                   print("the searchText is not working")
+                   return
+               }
+               
+               guard !searchText.isEmpty else {
+                          loadCompanyData(for: searchText)
+                          // if it is empty then reload all of the articles.
+                          return
+                      }
+               
+               loadCompanyData(for: searchText)
+               navigationItem.title = searchText
+               
+               searchBar.resignFirstResponder()
+    }
     
 }
 
@@ -120,7 +108,7 @@ extension SearchController: UICollectionViewDataSource {
         
         let selecteCompany = companyList[indexPath.row]
 
-        cell.configureCell(selecteCompany)
+        cell.configureCell(with: selecteCompany)
         
         return cell
     }
@@ -132,16 +120,15 @@ extension SearchController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
              let maxSize: CGSize = UIScreen.main.bounds.size
-          let spacingBtw: CGFloat = 10.0
-          let numOfItems: CGFloat = 2.0
+         // let spacingBtw: CGFloat = 10.0
+        //  let numOfItems: CGFloat = 2.0
           let itemHeight: CGFloat = maxSize.height * 0.45
           
-      
-          let maxWidth = maxSize.width
+        let maxWidth = maxSize.width
           
-            let totalSpacing: CGFloat = numOfItems * CGFloat(spacingBtw)
+         //   let totalSpacing: CGFloat = numOfItems * CGFloat(spacingBtw)
           
-              let itemWidth = (maxWidth - totalSpacing) / numOfItems
+        let itemWidth = maxWidth * 0.95 
           
              return CGSize(width: itemWidth, height: itemHeight)
            }
@@ -153,6 +140,13 @@ extension SearchController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // segue to detailView and add the dependency injection
+        
+        let company = companyList[indexPath.row]
+        
+        let dvc = DetailViewController(dataPersistence, company: company)
+        
+        navigationController?.pushViewController(dvc, animated: true)
+        
     }
     
 }

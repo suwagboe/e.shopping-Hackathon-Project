@@ -71,14 +71,13 @@ class WatchListController: UIViewController {
 
 extension WatchListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return companies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "watchListCell", for: indexPath) as? WatchListViewCell else {
             fatalError("Couldn't dequeue the CalendarCell")
         }
-        // TODO: initiate once the company model is complete
         let company = companies[indexPath.row]
 
         cell.configureCell(company: company)

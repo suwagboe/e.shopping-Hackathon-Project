@@ -10,72 +10,56 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="searchCell" id="Z4D-XO-Zaz" customClass="SearchCell" customModule="e_shopping_Hackathon" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="385" height="389"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="SAQ-zC-Otk">
-                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <rect key="frame" x="0.0" y="0.0" width="385" height="389"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZP-iz-fbh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z0k-vx-7MP" customClass="SearchCell" customModule="e_shopping_Hackathon" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bag.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="B4G-qa-JTx">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="599"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="company label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWp-Pj-J92">
-                                <rect key="frame" x="30" y="50" width="300" height="42"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="YRg-98-OJi"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThreeRating" translatesAutoresizingMaskIntoConstraints="NO" id="371-3S-s9o">
-                                <rect key="frame" x="50" y="117" width="200" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="5MU-Ok-awR"/>
-                                    <constraint firstAttribute="height" constant="200" id="6LQ-eE-tuB"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bag.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="B4G-qa-JTx">
+                        <rect key="frame" x="10" y="9.5" width="360" height="359"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="qWp-Pj-J92" firstAttribute="top" secondItem="z0k-vx-7MP" secondAttribute="top" constant="50" id="8co-mY-Jph"/>
-                            <constraint firstItem="qWp-Pj-J92" firstAttribute="leading" secondItem="z0k-vx-7MP" secondAttribute="leading" constant="30" id="BUv-37-qyh"/>
-                            <constraint firstItem="371-3S-s9o" firstAttribute="top" secondItem="qWp-Pj-J92" secondAttribute="bottom" constant="25" id="jag-ie-nKz"/>
-                            <constraint firstItem="371-3S-s9o" firstAttribute="leading" secondItem="z0k-vx-7MP" secondAttribute="leading" constant="50" id="vEP-Sv-jrh"/>
+                            <constraint firstAttribute="width" constant="360" id="BL0-fA-ijj"/>
+                            <constraint firstAttribute="height" constant="360" id="yiI-Jn-fPY"/>
                         </constraints>
-                        <connections>
-                            <outlet property="companyImage" destination="B4G-qa-JTx" id="DRz-3P-6AO"/>
-                            <outlet property="companyLabel" destination="qWp-Pj-J92" id="IjA-5F-SdO"/>
-                            <outlet property="scoreImage" destination="371-3S-s9o" id="taG-Ke-0Ll"/>
-                        </connections>
-                    </view>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="company label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWp-Pj-J92">
+                        <rect key="frame" x="20" y="40" width="157" height="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ZeroRating" translatesAutoresizingMaskIntoConstraints="NO" id="371-3S-s9o">
+                        <rect key="frame" x="20" y="240" width="120" height="120"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="6Ng-sc-nKk"/>
+                            <constraint firstAttribute="height" constant="120" id="J3S-1N-xGs"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="hZP-iz-fbh" firstAttribute="top" secondItem="SAQ-zC-Otk" secondAttribute="top" id="1bC-Vq-NZb"/>
-                    <constraint firstItem="hZP-iz-fbh" firstAttribute="leading" secondItem="SAQ-zC-Otk" secondAttribute="leading" id="7q7-6r-UMM"/>
-                    <constraint firstAttribute="bottom" secondItem="z0k-vx-7MP" secondAttribute="bottom" id="GTQ-Qg-vjf"/>
-                    <constraint firstAttribute="bottom" secondItem="hZP-iz-fbh" secondAttribute="bottom" id="hQi-cf-Ond"/>
-                    <constraint firstItem="z0k-vx-7MP" firstAttribute="top" secondItem="SAQ-zC-Otk" secondAttribute="top" id="nT4-Z1-hTY"/>
-                    <constraint firstAttribute="trailing" secondItem="hZP-iz-fbh" secondAttribute="trailing" id="phC-EZ-kuC"/>
-                    <constraint firstItem="z0k-vx-7MP" firstAttribute="leading" secondItem="SAQ-zC-Otk" secondAttribute="leading" id="qaL-6e-NMG"/>
-                    <constraint firstAttribute="trailing" secondItem="z0k-vx-7MP" secondAttribute="trailing" id="s7L-zC-T9z"/>
+                    <constraint firstItem="qWp-Pj-J92" firstAttribute="top" secondItem="SAQ-zC-Otk" secondAttribute="top" constant="40" id="4CC-e4-Xpr"/>
+                    <constraint firstItem="B4G-qa-JTx" firstAttribute="top" secondItem="SAQ-zC-Otk" secondAttribute="top" constant="10" id="BOK-gS-R7y"/>
+                    <constraint firstAttribute="bottom" secondItem="371-3S-s9o" secondAttribute="bottom" constant="40" id="D5l-m2-vwE"/>
+                    <constraint firstAttribute="bottom" secondItem="B4G-qa-JTx" secondAttribute="bottom" constant="10" id="Etr-B7-odh"/>
+                    <constraint firstItem="B4G-qa-JTx" firstAttribute="leading" secondItem="SAQ-zC-Otk" secondAttribute="leading" constant="10" id="IdV-z6-TTs"/>
+                    <constraint firstItem="371-3S-s9o" firstAttribute="top" secondItem="qWp-Pj-J92" secondAttribute="bottom" constant="170" id="Vm0-Sh-4ux"/>
+                    <constraint firstItem="qWp-Pj-J92" firstAttribute="leading" secondItem="SAQ-zC-Otk" secondAttribute="leading" constant="20" id="izh-2S-IQK"/>
+                    <constraint firstAttribute="trailing" secondItem="B4G-qa-JTx" secondAttribute="trailing" constant="10" id="y2d-1G-Ct0"/>
+                    <constraint firstItem="371-3S-s9o" firstAttribute="leading" secondItem="SAQ-zC-Otk" secondAttribute="leading" constant="20" id="zhn-N8-I1q"/>
                 </constraints>
             </collectionViewCellContentView>
-            <size key="customSize" width="696" height="562"/>
-            <point key="canvasLocation" x="23.188405797101453" y="117.1875"/>
+            <size key="customSize" width="473" height="287"/>
+            <connections>
+                <outlet property="companyLabel" destination="qWp-Pj-J92" id="rBi-jr-uE9"/>
+                <outlet property="scoreImage" destination="371-3S-s9o" id="itb-KB-Z6x"/>
+            </connections>
+            <point key="canvasLocation" x="-138.40579710144928" y="25.111607142857142"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ThreeRating" width="1024" height="1024"/>
+        <image name="ZeroRating" width="1024" height="1024"/>
         <image name="bag.fill" catalog="system" width="64" height="64"/>
     </resources>
 </document>

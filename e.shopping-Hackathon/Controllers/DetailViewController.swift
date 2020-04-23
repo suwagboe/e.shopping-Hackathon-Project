@@ -10,7 +10,7 @@ import UIKit
 import DataPersistence
 
 class DetailViewController: UIViewController {
-
+    
     private var dataPersistence: DataPersistence<Company>
     init(_ dataPersistence: DataPersistence<Company>, company: Company) {
         self.company = company
@@ -20,15 +20,43 @@ class DetailViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been initialized")
     }
+    
+    private let detailView = DetailView()
 
     private var company: Company?
     private var companyScore: Int?
+    
+    override func loadView() {
+         view = detailView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemPink
     }
+    
+    @objc private func actionSheetButtonPressed(_ sender: UIButton) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "cancel", style: .cancel)
+        let shareAction = UIAlertAction(title: "Share", style: .default) { shareAction in
+            self.shareCompany()
+        }
+        let watchAction = UIAlertAction(title: "Watch", style: .default) { watchAction in
+            self.watchCompany()
+        }
 
+        alertController.addAction(shareAction)
+        alertController.addAction(watchAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
+    }
+    private func shareCompany() {
+        
+    }
+    private func watchCompany() {
+        
+    }
+    
     @objc private func addCompanyToWatchList() {
         guard let watchedCompany = company else {
             return
