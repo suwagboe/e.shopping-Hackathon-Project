@@ -15,7 +15,7 @@ class TabController: UITabBarController {
 
         private lazy var mainVC: SearchController = {
             let controller = SearchController(dataPersistence)
-            controller.tabBarItem = UITabBarItem(title: "Search Controller", image: UIImage(systemName: "eyeglasses"), tag: 0)
+            controller.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "eyeglasses"), tag: 0)
             
             return controller
             
@@ -23,7 +23,8 @@ class TabController: UITabBarController {
         
         private lazy var watch: WatchListController = {
              let controller = WatchListController(dataPersistence)
-             controller.tabBarItem = UITabBarItem(title: "Detail", image: UIImage(systemName: "gear"), tag: 1)
+             controller.tabBarItem = UITabBarItem(title: "Watchlist", image: UIImage(systemName: "list.dash"), tag: 1)
+            controller.tabBarItem.badgeColor = UIColor.black
             
              return controller
              

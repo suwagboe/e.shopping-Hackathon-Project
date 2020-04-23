@@ -34,6 +34,7 @@ class SearchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureController()
+        navigationItem.title = "Search"
     }
     
      override func loadView() {
@@ -74,8 +75,11 @@ class SearchController: UIViewController {
 
 extension SearchController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-         searchBar.resignFirstResponder()
         
+        if !companyList.isEmpty{
+            searchBar.resignFirstResponder()
+        }
+
     }
     
     
@@ -93,7 +97,7 @@ extension SearchController: UISearchBarDelegate {
                       }
                
                loadCompanyData(for: searchText)
-               navigationItem.title = searchText
+               //navigationItem.title = searchText
                
               // searchBar.resignFirstResponder()
     }
@@ -114,6 +118,7 @@ extension SearchController: UICollectionViewDataSource {
         let selecteCompany = companyList[indexPath.row]
 
         cell.configureCell(with: selecteCompany)
+        cell.layer.cornerRadius = 5
         
         return cell
     }
