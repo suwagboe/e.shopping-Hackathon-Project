@@ -23,7 +23,7 @@ class TabController: UITabBarController {
         
         private lazy var watch: WatchListController = {
              let controller = WatchListController(dataPersistence)
-             controller.tabBarItem = UITabBarItem(title: "Detail", image: UIImage(systemName: "gear"), tag: 1)
+             controller.tabBarItem = UITabBarItem(title: "Watch List", image: UIImage(systemName: "tray.and.arrow.down"), tag: 1)
             
              return controller
              
