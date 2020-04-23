@@ -103,6 +103,8 @@ class DetailView: UIView {
     public lazy var companyNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Company Name"
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        label.font = UIFont(name: "Futura", size: 25)
         return label
     }()
     public lazy var descriptionTextView: UITextView = {

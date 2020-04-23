@@ -99,6 +99,7 @@ class DetailViewController: UIViewController {
 //        detailView.descriptionTextView.
 //        detailView.description
         navigationItem.title = company?.name
+        detailView.companyNameLabel.textColor = .white
         let categories = ["Animals", "People", "Politics", "Environment", "Sustainability"]
         
         guard let company = self.company else {
