@@ -23,6 +23,7 @@ class WatchListViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Company Name"
         label.numberOfLines = 3
+        label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         //label.textColor = .darkGray
         return label
@@ -57,6 +58,7 @@ class WatchListViewCell: UITableViewCell {
             companyScore = company.getCompanyRating(for: company)
             companyNameLabel.text = "\(company.name)"
             getRatingImage(score: companyScore)
+            companyImage.image = UIImage(named: company.name)
         }
         
         private func getRatingImage(score: Int) {
@@ -95,7 +97,7 @@ class WatchListViewCell: UITableViewCell {
         companyNameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             companyNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 30),
-            companyNameLabel.leadingAnchor.constraint(equalTo: companyImage.trailingAnchor, constant: 2),
+            companyNameLabel.leadingAnchor.constraint(equalTo: companyImage.trailingAnchor, constant: 10),
             companyNameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -5)
         ])
     }
@@ -105,7 +107,7 @@ class WatchListViewCell: UITableViewCell {
         ratingImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             ratingImage.topAnchor.constraint(equalTo: companyNameLabel.bottomAnchor, constant: 10),
-            ratingImage.leadingAnchor.constraint(equalTo: companyImage.trailingAnchor, constant: 10),
+            ratingImage.leadingAnchor.constraint(equalTo: companyImage.trailingAnchor, constant: 40),
             ratingImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
             ratingImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.23)
             
