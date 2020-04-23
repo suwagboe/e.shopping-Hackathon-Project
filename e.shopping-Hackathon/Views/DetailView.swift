@@ -102,14 +102,14 @@ class DetailView: UIView {
         return label
     }()
     public lazy var descriptionTextView: UITextView = {
-        let field = UITextView()
-        field.text = """
+        let view = UITextView()
+        view.text = """
         TEXT TEXT TEXT TEXT TEXT TEXT
         TEXT TEXT TEXT TEXT TEXT TEXT
         TEXT TEXT TEXT TEXT TEXT TEXT
         TEXT TEXT TEXT TEXT TEXT TEXT
 """
-        return field
+        return view
     }()
     public lazy var contextButton: UIButton =  {
         let button = UIButton()
@@ -126,6 +126,7 @@ class DetailView: UIView {
     }()
     public lazy var scoreImage: UIImageView = {
         let image = UIImageView()
+//        image.image = UIImage(systemName: "heart")
         image.image = UIImage(named: "ZeroRating")
         return image
     }()
@@ -133,11 +134,18 @@ class DetailView: UIView {
     // This will be set behind the alert
     public lazy var alertView: UIView = {
         let view = UIView()
+        view.backgroundColor = .red
         return view
     }()
-    public lazy var alertTextView: UITextField = {
-        let field = UITextField()
-        return field
+    public lazy var alertTextView: UITextView = {
+        let view = UITextView()
+        view.text = """
+        TEXT TEXT TEXT TEXT TEXT TEXT
+        TEXT TEXT TEXT TEXT TEXT TEXT
+        TEXT TEXT TEXT TEXT TEXT TEXT
+        TEXT TEXT TEXT TEXT TEXT TEXT
+"""
+        return view
     }()
     public lazy var newsArticlesButton: UIButton = {
         let button = UIButton()
@@ -167,9 +175,12 @@ class DetailView: UIView {
         descriptionViewConstraints()
         contextButtonConstraints()
         scoreLabelConstraints()
+        scoreImageConstraints()
         newsArticlesButtonConstraints()
         labelStackConstraints()
         imageStackConstraints()
+//        alertBkgdViewConstraints()
+        alertTextFieldConstraints()
     }
     //MARK:- Constraint Funcs
     private func companyLogoConstraints() {
@@ -226,7 +237,18 @@ class DetailView: UIView {
             scoreLabel.topAnchor.constraint(equalTo: companyLogoImageView.bottomAnchor, constant: 20),
             scoreLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             scoreLabel.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.20),
-            scoreLabel.widthAnchor.constraint(equalTo: scoreLabel.heightAnchor)
+            scoreLabel.widthAnchor.constraint(equalTo: scoreLabel.heightAnchor),
+        ])
+    }
+    private func scoreImageConstraints() {
+        addSubview(scoreImage)
+        scoreImage.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            scoreImage.topAnchor.constraint(equalTo: companyLogoImageView.bottomAnchor, constant: 20),
+            scoreImage.leadingAnchor.constraint(equalTo: scoreLabel.trailingAnchor),
+            scoreImage.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.20),
+            scoreImage.widthAnchor.constraint(equalTo: scoreLabel.heightAnchor),
+//            scoreImage.centerXAnchor.constraint(equalTo: categoryBoolImageStack.centerXAnchor)
         ])
     }
     //MARK:- NewsArticle
@@ -258,6 +280,30 @@ class DetailView: UIView {
             categoryBoolImageStack.leadingAnchor.constraint(equalTo: categoryLabelStack.trailingAnchor, constant: 20),
             categoryBoolImageStack.bottomAnchor.constraint(equalTo: categoryLabelStack.bottomAnchor),
             
+        ])
+    }
+//    private func alertBkgdViewConstraints() {
+//        addSubview(alertView)
+//        alertView.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            alertView.topAnchor.constraint(equalTo: categoryBoolImageStack.topAnchor),
+//            alertView.leadingAnchor.constraint(equalTo: categoryBoolImageStack.trailingAnchor, constant: 20),
+//            alertView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+//            alertView.bottomAnchor.constraint(equalTo: categoryBoolImageStack.bottomAnchor)
+//        ])
+//    }
+    private func alertTextFieldConstraints() {
+        addSubview(alertTextView)
+        alertTextView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            alertTextView.topAnchor.constraint(equalTo: categoryBoolImageStack.topAnchor),
+            alertTextView.leadingAnchor.constraint(equalTo: categoryBoolImageStack.trailingAnchor, constant: 20),
+            alertTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            alertTextView.bottomAnchor.constraint(equalTo: categoryBoolImageStack.bottomAnchor)
+//        alertTextView.topAnchor.constraint(equalTo: alertView.topAnchor, constant: 2),
+//        alertTextView.leadingAnchor.constraint(equalTo: alertView.trailingAnchor, constant: 2),
+//        alertTextView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor, constant: -2),
+//        alertTextView.bottomAnchor.constraint(equalTo: alertView.bottomAnchor, constant: -2)
         ])
     }
 }
