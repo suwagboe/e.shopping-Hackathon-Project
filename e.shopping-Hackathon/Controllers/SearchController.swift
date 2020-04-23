@@ -34,11 +34,18 @@ class SearchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureController()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "barcode.viewfinder"), style: .plain, target: self, action: #selector(presentBarcodeScanner))
     }
     
      override func loadView() {
        view = searchController
      }
+    
+    @objc private func presentBarcodeScanner(){
+        let scanner = ScannerViewController()
+        scanner.delegate = self
+        present(scanner, animated: true, completion: nil)
+    }
     
     private func configureController(){
        searchController.collection.register(UINib(nibName: "SearchCell", bundle: nil), forCellWithReuseIdentifier: "searchCell")
@@ -67,6 +74,24 @@ class SearchController: UIViewController {
                 self?.companyList = companies.filter { $0.name.lowercased().contains(enteredText)}
                 }
         })
+    }
+    
+    private func loadCompanyData(from productUPC: String){
+        DatabaseService.shared.readProducts {[weak self] (result) in
+            switch result {
+            case .failure(let error):
+                self?.showAlert(title: "Network error", message: "\(error)")
+            case .success(let products):
+                guard let selectProduct = products.filter({$0.upc.lowercased() == productUPC}).first else {
+                    self?.showAlert(title: "Product Not found", message: "UPC: \(productUPC) does not currently exist in our database")
+                    
+                    //Possibly add an option to allow the user to submit a Product with a UPC to our database for verfication
+                    return
+                }
+                self?.showAlert(title: "Product Found", message: "UPC: \(productUPC) querying database...")
+                self?.loadCompanyData(for: selectProduct.company)
+            }
+        }
     }
     
   
@@ -98,6 +123,12 @@ extension SearchController: UISearchBarDelegate {
               // searchBar.resignFirstResponder()
     }
     
+}
+
+extension SearchController: ScannerDelegate {
+    func foundItem(viewController: ScannerViewController, itemUPC: String) {
+        loadCompanyData(from: itemUPC)
+    }
 }
 
 extension SearchController: UICollectionViewDataSource {

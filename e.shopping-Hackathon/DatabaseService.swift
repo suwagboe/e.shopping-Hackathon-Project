@@ -31,6 +31,17 @@ class DatabaseService {
         }
     }
     
+    public func readProducts(completion: @escaping (Result<[Product], Error>) -> ()) {
+        db.collection(DatabaseService.productsCollection).getDocuments { (snapshot, error) in
+            if let error = error{
+                completion(.failure(error))
+            } else if let snapshot = snapshot {
+                let products = snapshot.documents.compactMap{Product($0.data())}
+                completion(.success(products.sorted{$0.name > $1.name}))
+            }
+        }
+    }
+    
     public func updateCompany(company: Company, completion: @escaping (Result<Bool, Error>) -> ()){
         db.collection(DatabaseService.companiesCollection).document(company.companyId).updateData(["alertMsg": company.alertMsg, "companyImgURL": company.companyImgURL, "desc": company.desc]) { (error) in
             if let error = error {
