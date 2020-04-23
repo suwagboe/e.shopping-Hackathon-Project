@@ -26,7 +26,6 @@
 		A6B1781C2450E018001C386D /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B1781B2450E018001C386D /* NewsViewCell.swift */; };
 		A6DD791C244F8571002D9350 /* WatchListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DD791B244F8571002D9350 /* WatchListViewCell.swift */; };
 		A6DD791E244FB653002D9350 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DD791D244FB653002D9350 /* EmptyView.swift */; };
-		A6DD792024509D9B002D9350 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DD791F24509D9B002D9350 /* Config.swift */; };
 		B7284DFF35D3E65D335B614E /* Pods_e_shopping_HackathonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45BEE8ADE5B4CD5395A1FC55 /* Pods_e_shopping_HackathonTests.framework */; };
 		C12E8A18244F5DCD00897F13 /* watchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E8A17244F5DCD00897F13 /* watchListView.swift */; };
 		C12E8A1A244F5DF000897F13 /* WatchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E8A19244F5DF000897F13 /* WatchListController.swift */; };
@@ -38,6 +37,7 @@
 		F18E5750244F72F00033ED02 /* CompanyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E574F244F72F00033ED02 /* CompanyModel.swift */; };
 		F18E5752244F7EAC0033ED02 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E5751244F7EAC0033ED02 /* DatabaseService.swift */; };
 		F18E5754244F85C00033ED02 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E5753244F85C00033ED02 /* StorageService.swift */; };
+		F18E575C2450EC6C0033ED02 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E575B2450EC6C0033ED02 /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +78,6 @@
 		A6B1781B2450E018001C386D /* NewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
 		A6DD791B244F8571002D9350 /* WatchListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListViewCell.swift; sourceTree = "<group>"; };
 		A6DD791D244FB653002D9350 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
-		A6DD791F24509D9B002D9350 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = SOURCE_ROOT; };
 		C12E8A17244F5DCD00897F13 /* watchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = watchListView.swift; sourceTree = "<group>"; };
 		C12E8A19244F5DF000897F13 /* WatchListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListController.swift; sourceTree = "<group>"; };
 		C12E8A1B244F6B2000897F13 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
@@ -88,6 +87,7 @@
 		F18E574F244F72F00033ED02 /* CompanyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyModel.swift; sourceTree = "<group>"; };
 		F18E5751244F7EAC0033ED02 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		F18E5753244F85C00033ED02 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		F18E575B2450EC6C0033ED02 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		FFFD35E782F7C756D682C5C4 /* Pods_e_shopping_Hackathon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_e_shopping_Hackathon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -170,7 +170,7 @@
 		55D16E36244DF8E600865482 /* supporting_files */ = {
 			isa = PBXGroup;
 			children = (
-				A6DD791F24509D9B002D9350 /* Config.swift */,
+				F18E575B2450EC6C0033ED02 /* Config.swift */,
 				55D16E11244DF82C00865482 /* AppDelegate.swift */,
 				55D16E13244DF82C00865482 /* SceneDelegate.swift */,
 				55D16E1D244DF82F00865482 /* Assets.xcassets */,
@@ -428,9 +428,9 @@
 				C12E8A24244F771300897F13 /* NewsArticle_API_Client.swift in Sources */,
 				55D16E14244DF82C00865482 /* SceneDelegate.swift in Sources */,
 				F18E5752244F7EAC0033ED02 /* DatabaseService.swift in Sources */,
-				A6DD792024509D9B002D9350 /* Config.swift in Sources */,
 				55D16E1C244DF82C00865482 /* e_shopping_Hackathon.xcdatamodeld in Sources */,
 				55D16E3E244F46D800865482 /* DetailViewController.swift in Sources */,
+				F18E575C2450EC6C0033ED02 /* Config.swift in Sources */,
 				C12E8A18244F5DCD00897F13 /* watchListView.swift in Sources */,
 				C18961EB24507E6C00D53AC3 /* UIView+Extension.swift in Sources */,
 				F18E5754244F85C00033ED02 /* StorageService.swift in Sources */,
