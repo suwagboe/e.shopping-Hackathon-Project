@@ -73,6 +73,11 @@ class SearchController: UIViewController {
 }
 
 extension SearchController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+         searchBar.resignFirstResponder()
+        
+    }
+    
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // unwrapping the text so that way there is something in it
@@ -90,14 +95,14 @@ extension SearchController: UISearchBarDelegate {
                loadCompanyData(for: searchText)
                navigationItem.title = searchText
                
-               searchBar.resignFirstResponder()
+              // searchBar.resignFirstResponder()
     }
     
 }
 
 extension SearchController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return companyList.count // 9
+        return companyList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
