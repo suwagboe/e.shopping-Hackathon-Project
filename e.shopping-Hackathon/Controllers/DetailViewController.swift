@@ -41,8 +41,19 @@ class DetailViewController: UIViewController {
         let shareAction = UIAlertAction(title: "Share", style: .default) { shareAction in
             self.shareCompany()
         }
-        let watchAction = UIAlertAction(title: "Watch", style: .default) { watchAction in
-            self.watchCompany()
+        
+        let watchAction = UIAlertAction(title: "Watch", style: .default) { watchAction1 in
+            guard let selectedCompany = self.company else {
+                return
+            }
+            if !self.dataPersistence.hasItemBeenSaved(selectedCompany){
+                watchAction1.setValue("Unwatch", forKey: "Unwatch")
+                self.unwatchCompany()
+            } else {
+                watchAction1.setValue("Watch", forKey: "Watch")
+                self.watchCompany()
+            }
+            
         }
 
         alertController.addAction(shareAction)
@@ -52,21 +63,62 @@ class DetailViewController: UIViewController {
     }
     private func shareCompany() {
         
+        guard let sharedCompany = company else {
+            return
+        }
+        
+        let string = "Did you know that \(sharedCompany.name) was recently rated \(sharedCompany.ratingValue) out of 5?"
+        let activityVC = UIActivityViewController(activityItems: [string], applicationActivities: nil)
+        present(activityVC, animated: true, completion: nil)
     }
     private func watchCompany() {
-        
+        addCompanyToWatchList()
     }
     
-    @objc private func addCompanyToWatchList() {
+    private func unwatchCompany(){
+        removeCompanyFromWatchList()
+    }
+    
+    private func updateCompanyRatingUI(with company: Company){
+        //detailView.cat1Label.text = #keyPath(company.company.name)
+    }
+    
+    @objc private func removeCompanyFromWatchList(){
         guard let watchedCompany = company else {
             return
         }
+                
         do {
-            try dataPersistence.createItem(watchedCompany)
+            guard let deletionIndex = try dataPersistence.loadItems().firstIndex(of: watchedCompany) else {
+                return
+            }
+            try dataPersistence.deleteItem(at: deletionIndex)
+
+        } catch {
+            self.showAlert(title: "Deletion Error", message: "Unable to delete")
+        }
+    }
+    
+    @objc private func addCompanyToWatchList() {
+        guard let company = self.company else {
+            return
+        }
+        do {
+            try dataPersistence.createItem(company)
         } catch {
             showAlert(title: "Error", message: "Failed to save company to watch list: \(error)")
         }
     }
+    
+    @objc private func segueToNewsController(){
+        
+        guard let company = self.company else {
+            return
+        }
+        //let vc = NewsViewController(company)
+        //present(vc)
+    }
+    
     private func getCompanyRating() {
         guard let companyToBeRated = company else {
             return

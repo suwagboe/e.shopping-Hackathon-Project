@@ -18,6 +18,7 @@ class WatchListController: UIViewController {
     init(_ dataPersistence: DataPersistence<Company>) {
         self.dataPersistence = dataPersistence
         super.init(nibName: nil, bundle: nil)
+        dataPersistence.delegate = self
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been initialized")
@@ -68,6 +69,26 @@ class WatchListController: UIViewController {
     
 }
 
+extension WatchListController: DataPersistenceDelegate{
+    func didSaveItem<T>(_ persistenceHelper: DataPersistence<T>, item: T) where T : Decodable, T : Encodable, T : Equatable {
+        
+        guard let company = item as? Company else {
+            return
+        }
+        companies.append(company)
+    }
+    
+    func didDeleteItem<T>(_ persistenceHelper: DataPersistence<T>, item: T) where T : Decodable, T : Encodable, T : Equatable {
+        
+        guard let company = item as? Company, let deletionIndex = companies.firstIndex(of: company) else {
+            return
+        }
+        
+        companies.remove(at: deletionIndex)
+        
+        //might need to sync the objects
+    }
+}
 
 extension WatchListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
