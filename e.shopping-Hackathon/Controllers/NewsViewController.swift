@@ -13,7 +13,13 @@ class NewsViewController: UIViewController {
     
     private let newsView = NewsView()
     
-    private var article = [Article]()
+    private var article = [Article](){
+        didSet{
+            DispatchQueue.main.async {
+                self.newsView.tableView.reloadData()
+            }
+        }
+    }
     private var company: Company
     init(_ company: Company) {
         self.company = company

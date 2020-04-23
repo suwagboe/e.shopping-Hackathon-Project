@@ -111,8 +111,14 @@ extension WatchListController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
          if editingStyle == .delete {
-             companies.remove(at: indexPath.row)
-             tableView.deleteRows(at: [indexPath], with: .fade)
+             //companies.remove(at: indexPath.row)
+             //tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            do {
+                try dataPersistence.deleteItem(at: indexPath.row)
+            } catch {
+                self.showAlert(title: "Deletion Error", message: "\(error)")
+            }
          }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
