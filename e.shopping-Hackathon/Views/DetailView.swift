@@ -103,6 +103,8 @@ class DetailView: UIView {
     }()
     public lazy var descriptionTextView: UITextView = {
         let view = UITextView()
+        view.font = UIFont(name: "Futura", size: 13)
+        view.layer.cornerRadius = 4
         view.text = """
 
         TEXT TEXT TEXT TEXT TEXT TEXT
@@ -115,8 +117,10 @@ class DetailView: UIView {
     public lazy var contextButton: UIButton =  {
         let button = UIButton()
         button.setImage(UIImage(systemName: "ellipsis.circle"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 40,left: 40, bottom: 40,right: 40)
         button.frame.size = CGSize(width: 100, height: 100)
-         button.imageView?.contentMode = .scaleAspectFit
+        button.imageView?.contentMode = .scaleAspectFill
+        button.tintColor = .black
          button.sizeToFit()
         return button
     }()
@@ -140,6 +144,10 @@ class DetailView: UIView {
     }()
     public lazy var alertTextView: UITextView = {
         let view = UITextView()
+        view.contentMode = .right
+        view.font = UIFont(name: "Futura", size: 18)
+        view.textAlignment = .center
+        view.layer.cornerRadius = 4
         view.text = """
         TEXT TEXT TEXT TEXT TEXT TEXT
         TEXT TEXT TEXT TEXT TEXT TEXT
@@ -227,8 +235,10 @@ class DetailView: UIView {
         addSubview(contextButton)
         contextButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            contextButton.topAnchor.constraint(equalTo: companyLogoImageView.topAnchor, constant: 20),
-            contextButton.trailingAnchor.constraint(equalTo: companyLogoImageView.trailingAnchor, constant: -20)
+            contextButton.topAnchor.constraint(equalTo: companyLogoImageView.topAnchor, constant: 10),
+            contextButton.trailingAnchor.constraint(equalTo: companyLogoImageView.trailingAnchor, constant: -10),
+            contextButton.heightAnchor.constraint(equalToConstant: 40),
+            contextButton.widthAnchor.constraint(equalToConstant: 40)
         ])
     }
     private func scoreLabelConstraints() {
@@ -236,7 +246,7 @@ class DetailView: UIView {
         scoreLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             scoreLabel.topAnchor.constraint(equalTo: companyLogoImageView.bottomAnchor, constant: 20),
-            scoreLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+//            scoreLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             scoreLabel.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.20),
             scoreLabel.widthAnchor.constraint(equalTo: scoreLabel.heightAnchor),
         ])
@@ -249,7 +259,7 @@ class DetailView: UIView {
             scoreImage.leadingAnchor.constraint(equalTo: scoreLabel.trailingAnchor),
             scoreImage.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.20),
             scoreImage.widthAnchor.constraint(equalTo: scoreLabel.heightAnchor),
-//            scoreImage.centerXAnchor.constraint(equalTo: categoryBoolImageStack.centerXAnchor)
+            scoreImage.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
     //MARK:- NewsArticle
