@@ -1109,7 +1109,6 @@ class e_shopping_HackathonTests: XCTestCase {
         case standardThumbnail = "Standard Thumbnail"
         case normal = "Normal"
     }
-    
     struct TopStories: Codable & Equatable {
         let response: Docs
     }
@@ -1117,15 +1116,17 @@ class e_shopping_HackathonTests: XCTestCase {
         let docs: [Article]
     }
     struct Article: Codable & Equatable {
-
         let abstract: String
+        let webURL: String
+        let publicationDate: String
         let multimedia: [Multimedia]?
         private enum CodingKeys: String, CodingKey {
             case abstract
+            case webURL = "web_url"
+            case publicationDate = "pub_date"
             case multimedia
         }
     }
-    
     struct Multimedia: Codable & Equatable {
         let url: String
         let height: Double

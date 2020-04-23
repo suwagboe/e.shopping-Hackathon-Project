@@ -10,7 +10,8 @@ import Foundation
 
 struct NYTTopStoriesAPIClient {
   static func fetchCompanyArticles(for search: String, completion: @escaping (Result<TopStories, AppError>) -> ()) {
-    let articleSearchEndpoint = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=\(search)&api-key=\(Config.apiKey)"
+    let searchQuery = search.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "tacos"
+    let articleSearchEndpoint = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=\(searchQuery)&api-key=\(Config.apiKey)"
     guard let url = URL(string: articleSearchEndpoint) else {
       completion(.failure(.badURL(articleSearchEndpoint)))
       return
