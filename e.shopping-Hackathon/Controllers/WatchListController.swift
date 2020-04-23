@@ -13,7 +13,7 @@ class WatchListController: UIViewController {
     
     private let watchListView = WatchListView()
     
-
+    
     private var dataPersistence: DataPersistence<Company>
     init(_ dataPersistence: DataPersistence<Company>) {
         self.dataPersistence = dataPersistence
@@ -28,10 +28,12 @@ class WatchListController: UIViewController {
         didSet {
             watchListView.tableView.reloadData()
             if companies.isEmpty {
+                watchListView.tableView.tableFooterView = UIView(frame: .zero)
                 watchListView.tableView.backgroundView = EmptyView(title: "Watch List", message: "There are currently no companies on your watch list. Search for a company you are interested in and add it to your watch list.")
             } else {
                 watchListView.tableView.backgroundView = nil
             }
+            
         }
     }
     
@@ -41,24 +43,24 @@ class WatchListController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let backgroundImage = UIImage(named: "suspicious")
-        let imageView = UIImageView(image: backgroundImage)
-        self.watchListView.tableView.backgroundView = imageView
+        navigationItem.title = "Watch List"
         watchListView.tableView.dataSource = self
         watchListView.tableView.delegate = self
-        
         watchListView.tableView.register(WatchListViewCell.self, forCellReuseIdentifier: "watchListCell")
         fetchCompanies()
     }
-  
+    
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-
+        super.viewWillAppear(true)
+        let backgroundImage = UIImage(named: "ss")
+        let imageView = UIImageView(image: backgroundImage)
+        self.watchListView.tableView.backgroundView = imageView
+        watchListView.tableView.tableFooterView = UIView(frame: .zero)
+        imageView.contentMode = .scaleAspectFit
+        
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-
+  
+    
     private func fetchCompanies() {
         do {
             companies = try dataPersistence.loadItems()
@@ -91,6 +93,7 @@ extension WatchListController: DataPersistenceDelegate{
 }
 
 extension WatchListController: UITableViewDataSource, UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return companies.count
     }
@@ -100,9 +103,9 @@ extension WatchListController: UITableViewDataSource, UITableViewDelegate {
             fatalError("Couldn't dequeue the CalendarCell")
         }
         let company = companies[indexPath.row]
-
+        
         cell.configureCell(company: company)
-        cell.backgroundColor = UIColor(white: 0.2, alpha: 0.3)
+        cell.backgroundColor = .clear    //UIColor(white: 0.2, alpha: 0.3)
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -110,23 +113,23 @@ extension WatchListController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-         if editingStyle == .delete {
-             //companies.remove(at: indexPath.row)
-             //tableView.deleteRows(at: [indexPath], with: .fade)
+        if editingStyle == .delete {
+            //companies.remove(at: indexPath.row)
+            //tableView.deleteRows(at: [indexPath], with: .fade)
             
             do {
                 try dataPersistence.deleteItem(at: indexPath.row)
             } catch {
                 self.showAlert(title: "Deletion Error", message: "\(error)")
             }
-         }
+        }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let company = companies[indexPath.row]
         let detailVC = DetailViewController(dataPersistence, company: company)
         navigationController?.pushViewController(detailVC, animated: true)
     }
-
+    
 }
 
 

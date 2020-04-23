@@ -86,6 +86,7 @@ extension SearchController: UISearchBarDelegate {
         }
         
         loadCompanyData(for: searchText)
+
     }
     
 }

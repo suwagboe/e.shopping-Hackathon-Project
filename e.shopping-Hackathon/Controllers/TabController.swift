@@ -23,9 +23,9 @@ class TabController: UITabBarController {
         
         private lazy var watch: WatchListController = {
              let controller = WatchListController(dataPersistence)
-             controller.tabBarItem = UITabBarItem(title: "Watchlist", image: UIImage(systemName: "list.dash"), tag: 1)
-//            controller.tabBarItem.badgeColor = .black
-            
+
+             controller.tabBarItem = UITabBarItem(title: "Watch List", image: UIImage(systemName: "tray.and.arrow.down"), tag: 
+       
              return controller
              
          }()
