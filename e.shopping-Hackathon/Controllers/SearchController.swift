@@ -93,7 +93,7 @@ extension SearchController: UISearchBarDelegate {
                       }
                
                loadCompanyData(for: searchText)
-               navigationItem.title = searchText
+//               navigationItem.title = searchText
                
               // searchBar.resignFirstResponder()
     }

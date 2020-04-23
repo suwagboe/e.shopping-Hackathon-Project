@@ -32,11 +32,17 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemPink
+        view.backgroundColor = .white
         addTarget()
         updateUI()
+        detailView.companyLogoImageView.image = UIImage(named: company?.name ?? "xmark.octagon")
+        detailView.descriptionTextView.backgroundColor = .systemBackground
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "News", style: .plain, target: self, action: #selector(segueToNewsController(_:)))
+        navigationItem.rightBarButtonItem?.tintColor = .black
+        navigationItem.backBarButtonItem?.tintColor = .black
+        detailView.newsArticlesButton.isHidden = true
     }
-    
+
     @objc private func actionSheetButtonPressed(_ sender: UIButton) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "cancel", style: .cancel)
@@ -86,9 +92,15 @@ class DetailViewController: UIViewController {
     }
     
     private func updateUI(){
-        
+        detailView.alertTextView.isEditable = false
+        detailView.descriptionTextView.isEditable = false
+        detailView.companyNameLabel.text = "About this company"
+        detailView.alertTextView.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+//        detailView.descriptionTextView.
+//        detailView.description
+        navigationItem.title = company?.name
+        detailView.companyNameLabel.textColor = .white
         let categories = ["Animals", "People", "Politics", "Environment", "Sustainability"]
-        
         
         guard let company = self.company else {
             return
@@ -99,15 +111,18 @@ class DetailViewController: UIViewController {
             
             if rating == true {
                 detailView.categoryBoolImageArr[index].image = UIImage(systemName: "checkmark.circle")
+                detailView.categoryBoolImageArr[index].tintColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
             } else {
                 detailView.categoryBoolImageArr[index].image = UIImage(systemName: "xmark.circle")
+                detailView.categoryBoolImageArr[index].tintColor = #colorLiteral(red: 0.7930985689, green: 0.07609080523, blue: 0, alpha: 1)
             }
         }
         
         detailView.scoreImage.image = UIImage(named: getRatingImage(score: company.getCompanyRating(for: company)))
         detailView.descriptionTextView.text = company.desc
-        detailView.companyNameLabel.text = company.name
-        detailView.alertTextView.text = company.alertMsg
+//        detailView.companyNameLabel.text = company.name
+        
+        detailView.alertTextView.text = ("Alert: \(company.alertMsg)")
     }
     
     private func getRatingImage(score: Int) -> String {
@@ -157,7 +172,7 @@ class DetailViewController: UIViewController {
         }
     }
     
-    @objc private func segueToNewsController(){
+    @objc private func segueToNewsController(_ sender: UIBarButtonItem){
         
         guard let company = self.company else {
             return

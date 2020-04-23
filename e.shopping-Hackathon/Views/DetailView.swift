@@ -14,7 +14,7 @@ class DetailView: UIView {
         let stack = UIStackView(arrangedSubviews: [animalLabel,peopleLabel,politicsLabel,environmentLabel,sustainabilityLabel])
         stack.axis = .vertical
         stack.distribution = .fillEqually
-        stack.alignment = .trailing
+        stack.alignment = .leading
         stack.spacing = 5
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
@@ -81,6 +81,7 @@ class DetailView: UIView {
         let image = UIImageView()
         image.image = UIImage(systemName: "questionmark.circle")
         image.contentMode = .scaleAspectFill
+//        image.layer.masksToBounds = true
         return image
     }()
     public lazy var categoryBoolImageArr: [UIImageView] = [ratingImage1, ratingImage2, ratingImage3, ratingImage4, ratingImage5]
@@ -88,21 +89,28 @@ class DetailView: UIView {
     public lazy var companyLogoImageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "heart")
+        image.contentMode = .scaleAspectFit
+        image.layer.cornerRadius = 4
         return image
     }()
     public lazy var transparentView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
+        view.layer.cornerRadius = 4
         view.alpha = 0.2
         return view
     }()
     public lazy var companyNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Company Name"
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        label.font = UIFont(name: "Futura", size: 25)
         return label
     }()
     public lazy var descriptionTextView: UITextView = {
         let view = UITextView()
+        view.font = UIFont(name: "Futura", size: 18)
+        view.layer.cornerRadius = 8
         view.text = """
 
         TEXT TEXT TEXT TEXT TEXT TEXT
@@ -115,9 +123,11 @@ class DetailView: UIView {
     public lazy var contextButton: UIButton =  {
         let button = UIButton()
         button.setImage(UIImage(systemName: "ellipsis.circle"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 40,left: 40, bottom: 40,right: 40)
         button.frame.size = CGSize(width: 100, height: 100)
-         button.imageView?.contentMode = .scaleAspectFit
-         button.sizeToFit()
+        button.imageView?.contentMode = .scaleAspectFill
+        button.tintColor = .black
+        button.sizeToFit()
         return button
     }()
     public lazy var scoreLabel: UILabel = {
@@ -140,6 +150,10 @@ class DetailView: UIView {
     }()
     public lazy var alertTextView: UITextView = {
         let view = UITextView()
+        view.contentMode = .right
+        view.font = UIFont(name: "Futura", size: 18)
+        view.textAlignment = .center
+        view.layer.cornerRadius = 4
         view.text = """
         TEXT TEXT TEXT TEXT TEXT TEXT
         TEXT TEXT TEXT TEXT TEXT TEXT
@@ -199,8 +213,8 @@ class DetailView: UIView {
         transparentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
         transparentView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
-        transparentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-        transparentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+        transparentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+        transparentView.trailingAnchor.constraint(equalTo: trailingAnchor),
         transparentView.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.30)
         ])
     }
@@ -227,8 +241,10 @@ class DetailView: UIView {
         addSubview(contextButton)
         contextButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            contextButton.topAnchor.constraint(equalTo: companyLogoImageView.topAnchor, constant: 20),
-            contextButton.trailingAnchor.constraint(equalTo: companyLogoImageView.trailingAnchor, constant: -20)
+            contextButton.topAnchor.constraint(equalTo: companyLogoImageView.topAnchor, constant: 10),
+            contextButton.trailingAnchor.constraint(equalTo: companyLogoImageView.trailingAnchor, constant: -10),
+            contextButton.heightAnchor.constraint(equalToConstant: 40),
+            contextButton.widthAnchor.constraint(equalToConstant: 40)
         ])
     }
     private func scoreLabelConstraints() {
@@ -236,7 +252,7 @@ class DetailView: UIView {
         scoreLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             scoreLabel.topAnchor.constraint(equalTo: companyLogoImageView.bottomAnchor, constant: 20),
-            scoreLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+//            scoreLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             scoreLabel.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.20),
             scoreLabel.widthAnchor.constraint(equalTo: scoreLabel.heightAnchor),
         ])
@@ -249,7 +265,7 @@ class DetailView: UIView {
             scoreImage.leadingAnchor.constraint(equalTo: scoreLabel.trailingAnchor),
             scoreImage.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.20),
             scoreImage.widthAnchor.constraint(equalTo: scoreLabel.heightAnchor),
-//            scoreImage.centerXAnchor.constraint(equalTo: categoryBoolImageStack.centerXAnchor)
+            scoreImage.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
     //MARK:- NewsArticle
@@ -298,8 +314,8 @@ class DetailView: UIView {
         alertTextView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             alertTextView.topAnchor.constraint(equalTo: categoryBoolImageStack.topAnchor),
-            alertTextView.leadingAnchor.constraint(equalTo: categoryBoolImageStack.trailingAnchor, constant: 20),
-            alertTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            alertTextView.leadingAnchor.constraint(equalTo: categoryBoolImageStack.trailingAnchor, constant: 30),
+            alertTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
             alertTextView.bottomAnchor.constraint(equalTo: categoryBoolImageStack.bottomAnchor)
 //        alertTextView.topAnchor.constraint(equalTo: alertView.topAnchor, constant: 2),
 //        alertTextView.leadingAnchor.constraint(equalTo: alertView.trailingAnchor, constant: 2),
