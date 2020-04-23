@@ -33,6 +33,8 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemPink
+        addTarget()
+        updateUI()
     }
     
     @objc private func actionSheetButtonPressed(_ sender: UIButton) {
@@ -41,17 +43,16 @@ class DetailViewController: UIViewController {
         let shareAction = UIAlertAction(title: "Share", style: .default) { shareAction in
             self.shareCompany()
         }
+        guard let selectedCompany = self.company, let watchTitle = !self.dataPersistence.hasItemBeenSaved(selectedCompany) ? "Watch" : "Unwatch" else {
+            return
+        }
         
-        let watchAction = UIAlertAction(title: "Watch", style: .default) { watchAction1 in
-            guard let selectedCompany = self.company else {
-                return
-            }
-            if !self.dataPersistence.hasItemBeenSaved(selectedCompany){
-                watchAction1.setValue("Unwatch", forKey: "Unwatch")
-                self.unwatchCompany()
-            } else {
-                watchAction1.setValue("Watch", forKey: "Watch")
+
+        let watchAction = UIAlertAction(title: watchTitle, style: .default) { watchAction1 in
+            if watchTitle == "Watch" {
                 self.watchCompany()
+            } else {
+                self.unwatchCompany()
             }
             
         }
@@ -61,6 +62,11 @@ class DetailViewController: UIViewController {
         alertController.addAction(cancelAction)
         present(alertController, animated: true)
     }
+    private func addTarget(){
+        detailView.contextButton.addTarget(self, action: #selector(actionSheetButtonPressed(_:)), for: .touchUpInside)
+        detailView.newsArticlesButton.addTarget(self, action: #selector(segueToNewsController), for: .touchUpInside)
+    }
+    
     private func shareCompany() {
         
         guard let sharedCompany = company else {
@@ -79,8 +85,49 @@ class DetailViewController: UIViewController {
         removeCompanyFromWatchList()
     }
     
-    private func updateCompanyRatingUI(with company: Company){
-        //detailView.cat1Label.text = #keyPath(company.company.name)
+    private func updateUI(){
+        
+        let categories = ["Animals", "People", "Politics", "Environment", "Sustainability"]
+        
+        
+        guard let company = self.company else {
+            return
+        }
+        let categoriesBoolOrdered = [company.animalsRating, company.peopleRating, company.politicsRating, company.environmentRating, company.sustainabilityRating]
+        
+        for (index, rating) in categoriesBoolOrdered.enumerated() {
+            
+            if rating == true {
+                detailView.categoryBoolImageArr[index].image = UIImage(systemName: "checkmark.circle")
+            } else {
+                detailView.categoryBoolImageArr[index].image = UIImage(systemName: "xmark.circle")
+            }
+        }
+        
+        detailView.scoreImage.image = UIImage(named: getRatingImage(score: company.getCompanyRating(for: company)))
+        detailView.descriptionTextView.text = company.desc
+        detailView.companyNameLabel.text = company.name
+        detailView.alertTextView.text = company.alertMsg
+    }
+    
+    private func getRatingImage(score: Int) -> String {
+      //  var newImage = ""
+       switch score {
+       case 0:
+          return "ZeroRating"
+       case 1:
+          return "OneRating"
+       case 2:
+          return "TwoRating"
+       case 3:
+          return "ThreeRating"
+       case 4:
+        return  "FourRating"
+       case 5:
+          return "FiveRating"
+       default:
+         return  "􀒊"
+       }
     }
     
     @objc private func removeCompanyFromWatchList(){
@@ -115,8 +162,8 @@ class DetailViewController: UIViewController {
         guard let company = self.company else {
             return
         }
-        //let vc = NewsViewController(company)
-        //present(vc)
+        let vc = NewsViewController(company)
+        present(vc, animated: true)
     }
     
     private func getCompanyRating() {

@@ -104,6 +104,7 @@ class DetailView: UIView {
     public lazy var descriptionTextView: UITextView = {
         let view = UITextView()
         view.text = """
+
         TEXT TEXT TEXT TEXT TEXT TEXT
         TEXT TEXT TEXT TEXT TEXT TEXT
         TEXT TEXT TEXT TEXT TEXT TEXT
