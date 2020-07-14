@@ -35,6 +35,8 @@ class SearchController: UIViewController {
         super.viewDidLoad()
         configureController()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "barcode.viewfinder"), style: .plain, target: self, action: #selector(presentBarcodeScanner))
+        navigationItem.title = "Search"
+        //self.navigationController?.navigationBar.barTintColor = .systemRed
     }
     
      override func loadView() {
@@ -57,7 +59,7 @@ class SearchController: UIViewController {
     }
     
     private func emptyViewConfig(){
-        if searchController.searchBar.text?.isEmpty == true {
+        if companyList.isEmpty == true {
                         searchController.collection.backgroundView = EmptyView(title: "Welcome To Fair + Square", message: "Please search a for a company so we can get this party started!!")
                     } else {
         searchController.collection.backgroundView = nil
@@ -73,6 +75,9 @@ class SearchController: UIViewController {
             case .success(let companies):
                 self?.companyList = companies.filter { $0.name.lowercased().contains(enteredText)}
                 }
+            if !(self?.companyList.isEmpty)!{
+                self?.searchController.searchBar.resignFirstResponder()
+            }
         })
     }
     
@@ -99,28 +104,14 @@ class SearchController: UIViewController {
 
 extension SearchController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-         searchBar.resignFirstResponder()
         
-    }
-    
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // unwrapping the text so that way there is something in it
-               guard let searchText = searchBar.text else {
-                   print("the searchText is not working")
-                   return
-               }
-               
-               guard !searchText.isEmpty else {
-                          loadCompanyData(for: searchText)
-                          // if it is empty then reload all of the articles.
-                          return
-                      }
-               
-               loadCompanyData(for: searchText)
-               navigationItem.title = searchText
-               
-              // searchBar.resignFirstResponder()
+        guard let searchText = searchBar.text, !searchText.isEmpty else {
+            print("the searchText is not working")
+            return
+        }
+        
+        loadCompanyData(for: searchText)
+
     }
     
 }
@@ -145,6 +136,7 @@ extension SearchController: UICollectionViewDataSource {
         let selecteCompany = companyList[indexPath.row]
 
         cell.configureCell(with: selecteCompany)
+        cell.layer.cornerRadius = 5
         
         return cell
     }
