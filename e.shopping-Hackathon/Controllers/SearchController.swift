@@ -35,7 +35,7 @@ class SearchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureController()
-        navigationItem.title = "Search"
+        navigationItem.title = "Fair+Square"
         loadAllCompanyData()
         //self.navigationController?.navigationBar.barTintColor = .systemRed
     }
