@@ -15,6 +15,7 @@ class WatchListViewCell: UITableViewCell {
     public lazy var companyImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "house")
+        imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .darkGray
         return imageView
     }()
@@ -47,8 +48,8 @@ class WatchListViewCell: UITableViewCell {
     }
     
     private func commonInit() {
-        setupCompanyImage()
         setupCompanyNameLabel()
+        setupCompanyImage()
         setupRatingImage()
     }
     
@@ -85,10 +86,9 @@ class WatchListViewCell: UITableViewCell {
         addSubview(companyImage)
         companyImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            companyImage.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            companyImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 1),
-            companyImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1),
-            companyImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.55) // companyImage.heightAnchor)
+            companyImage.topAnchor.constraint(equalTo: companyNameLabel.bottomAnchor, constant: 8),
+            companyImage.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -8),
+            companyImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
         ])
     }
     
@@ -96,9 +96,9 @@ class WatchListViewCell: UITableViewCell {
         addSubview(companyNameLabel)
         companyNameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            companyNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 30),
-            companyNameLabel.leadingAnchor.constraint(equalTo: companyImage.trailingAnchor, constant: 10),
-            companyNameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -5)
+            companyNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            companyNameLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            companyNameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -8)
         ])
     }
     
@@ -106,11 +106,11 @@ class WatchListViewCell: UITableViewCell {
         addSubview(ratingImage)
         ratingImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            ratingImage.topAnchor.constraint(equalTo: companyNameLabel.bottomAnchor, constant: 10),
-            ratingImage.leadingAnchor.constraint(equalTo: companyImage.trailingAnchor, constant: 40),
-            ratingImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
-            ratingImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.23)
-            
+            ratingImage.trailingAnchor.constraint(equalTo: companyImage.leadingAnchor, constant: 8),
+            ratingImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            ratingImage.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.35),
+            ratingImage.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.35),
+            ratingImage.centerYAnchor.constraint(equalTo: companyImage.centerYAnchor)
         ])
     }
 }

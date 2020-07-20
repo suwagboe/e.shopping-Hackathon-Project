@@ -16,6 +16,7 @@ struct Company: Codable & Equatable {
     var politicsRating: Bool
     var sustainabilityRating: Bool
     let ratingValue: Int
+    let category: String
     
     public func getCompanyRating(for company: Company) -> Int {
         let ratingCategories = [company.animalsRating, company.peopleRating, company.sustainabilityRating, company.environmentRating, company.politicsRating]
@@ -44,5 +45,6 @@ extension Company{
         self.politicsRating = dictionary["politicsRating"] as? Bool ?? false
         self.sustainabilityRating = dictionary["sustainabilityRating"] as? Bool ?? false
         self.ratingValue = dictionary["ratingValue"] as? Int ?? 0
+        self.category = dictionary["category"] as? String ?? "No category available"
     }
 }
