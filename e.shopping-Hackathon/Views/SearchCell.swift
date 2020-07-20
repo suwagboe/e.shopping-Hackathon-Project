@@ -23,13 +23,20 @@ class SearchCell: UICollectionViewCell {
     @IBOutlet weak var scoreImage: UIImageView!
     
     public func configureCell(with company: Company){
+        backgroundColor = .tertiarySystemBackground
         
         var companyScore = 0
         companyLabel.text = company.name
+//        companyLabel.backgroundColor = .secondarySystemGroupedBackground
+        companyLabel.backgroundColor = .tertiarySystemGroupedBackground
+
+        companyLabel.layer.masksToBounds = true
+        companyLabel.layer.cornerRadius = 4
         companyScore = company.getCompanyRating(for: company)
-    
+        
         scoreImage.image = UIImage(named: getRatingImage(score: companyScore))
         companyImage.image = UIImage(named: company.name)
+        companyImage.layer.cornerRadius = 4
    /*
         StorageService.shared.fetchPhoto(filename: "gs://fair-and-square.appspot.com/Nestle.jpg") { (result) in
           switch result {

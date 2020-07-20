@@ -144,7 +144,7 @@ extension SearchController: UICollectionViewDelegateFlowLayout {
         let maxSize: CGSize = UIScreen.main.bounds.size
         // let spacingBtw: CGFloat = 10.0
         //  let numOfItems: CGFloat = 2.0
-        let itemHeight: CGFloat = maxSize.height * 0.45
+        let itemHeight: CGFloat = maxSize.height * 0.40
         
         let maxWidth = maxSize.width
         
