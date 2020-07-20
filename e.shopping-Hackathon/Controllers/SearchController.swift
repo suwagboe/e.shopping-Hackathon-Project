@@ -17,11 +17,12 @@ class SearchController: UIViewController {
             emptyViewConfig()
         }
     }
+    private var allCompanyData = [Company]()
     
     private let searchController = SearchView()
     
     private var company: Company?
-
+    
     private var dataPersistence: DataPersistence<Company>
     init(_ dataPersistence: DataPersistence<Company>) {
         self.dataPersistence = dataPersistence
@@ -35,16 +36,16 @@ class SearchController: UIViewController {
         super.viewDidLoad()
         configureController()
         navigationItem.title = "Search"
+        loadAllCompanyData()
         //self.navigationController?.navigationBar.barTintColor = .systemRed
     }
     
-     override func loadView() {
-       view = searchController
-     }
+    override func loadView() {
+        view = searchController
+    }
     
     private func configureController(){
-       searchController.collection.register(UINib(nibName: "SearchCell", bundle: nil), forCellWithReuseIdentifier: "searchCell")
-        
+        searchController.collection.register(UINib(nibName: "SearchCell", bundle: nil), forCellWithReuseIdentifier: "searchCell")
         searchController.searchBar.delegate = self
         searchController.collection.delegate = self
         searchController.collection.dataSource = self
@@ -53,40 +54,55 @@ class SearchController: UIViewController {
     
     private func emptyViewConfig(){
         if companyList.isEmpty == true {
-                        searchController.collection.backgroundView = EmptyView(title: "Welcome To Fair + Square", message: "Please search a for a company so we can get this party started!!")
-                    } else {
-        searchController.collection.backgroundView = nil
+            searchController.collection.backgroundView = EmptyView(title: "Welcome To Fair + Square", message: "Please search a for a company so we can get this party started!!")
+        } else {
+            searchController.collection.backgroundView = nil
         }
     }
-    
-    private func loadCompanyData(for enteredText: String) {
+    private func loadAllCompanyData() {
+        // Note: This func loads all companies once to the "allCompanies" variable, and when we need all companies for whatever reason, we can use this data.
+        // This should result in less network calls
         DatabaseService.shared.readCompanies(completion: { [weak self]
-            (result) in
-            switch result {
-            case .failure:
-                fatalError("couldn't load the companies from database inside of the search controller")
-            case .success(let companies):
-                self?.companyList = companies.filter { $0.name.lowercased().contains(enteredText)}
+                (result) in
+                switch result {
+                case .failure:
+                    fatalError("couldn't load the companies from database inside of the search controller")
+                case .success(let companies):
+                    self?.allCompanyData = companies
+                    self?.companyList = companies
                 }
-            if !(self?.companyList.isEmpty)!{
-                self?.searchController.searchBar.resignFirstResponder()
-            }
-        })
-    }
+            })
+        }
     
-  
+    private func searchCompanyData(for enteredText: String) {
+        companyList = allCompanyData.filter { $0.name.lowercased().contains(enteredText.lowercased()) }
+//        DatabaseService.shared.readCompanies(completion: { [weak self]
+//            (result) in
+//            switch result {
+//            case .failure:
+//                fatalError("couldn't load the companies from database inside of the search controller")
+//            case .success(let companies):
+//                self?.companyList = companies.filter { $0.name.lowercased().contains(enteredText.lowercased())}
+//            }
+//            if !(self?.companyList.isEmpty)!{
+//                self?.searchController.searchBar.resignFirstResponder()
+//            }
+//        })
+    }
 }
 
 extension SearchController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
         guard let searchText = searchBar.text, !searchText.isEmpty else {
             print("the searchText is not working")
             return
         }
-        
-        loadCompanyData(for: searchText)
-        searchBar.setShowsCancelButton(false, animated: true)
+        if !searchText.isEmpty {
+            searchCompanyData(for: searchText)
+//            searchBar.setShowsCancelButton(false, animated: true)
+        } else {
+            loadAllCompanyData()
+        }
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
@@ -95,6 +111,8 @@ extension SearchController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
         companyList.removeAll()
+        // Note: When the cancel button is tapped, the company data is removed and all companies loaded immediately
+        loadAllCompanyData()
     }
 }
 
@@ -110,7 +128,7 @@ extension SearchController: UICollectionViewDataSource {
         }
         
         let selecteCompany = companyList[indexPath.row]
-
+        
         cell.configureCell(with: selecteCompany)
         cell.layer.cornerRadius = 5
         
@@ -123,24 +141,24 @@ extension SearchController: UICollectionViewDataSource {
 extension SearchController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-             let maxSize: CGSize = UIScreen.main.bounds.size
-         // let spacingBtw: CGFloat = 10.0
+        let maxSize: CGSize = UIScreen.main.bounds.size
+        // let spacingBtw: CGFloat = 10.0
         //  let numOfItems: CGFloat = 2.0
-          let itemHeight: CGFloat = maxSize.height * 0.45
-          
+        let itemHeight: CGFloat = maxSize.height * 0.45
+        
         let maxWidth = maxSize.width
-          
-         //   let totalSpacing: CGFloat = numOfItems * CGFloat(spacingBtw)
-          
+        
+        //   let totalSpacing: CGFloat = numOfItems * CGFloat(spacingBtw)
+        
         let itemWidth = maxWidth * 0.95 
-          
-             return CGSize(width: itemWidth, height: itemHeight)
-           }
+        
+        return CGSize(width: itemWidth, height: itemHeight)
+    }
     
     
-           func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-             return UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
-           }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // segue to detailView and add the dependency injection
