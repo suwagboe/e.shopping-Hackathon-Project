@@ -86,9 +86,16 @@ extension SearchController: UISearchBarDelegate {
         }
         
         loadCompanyData(for: searchText)
-
+        searchBar.setShowsCancelButton(false, animated: true)
     }
-    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
+        companyList.removeAll()
+    }
 }
 
 extension SearchController: UICollectionViewDataSource {

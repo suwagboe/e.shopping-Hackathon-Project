@@ -52,11 +52,11 @@ class WatchListController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        let backgroundImage = UIImage(named: "ss")
-        let imageView = UIImageView(image: backgroundImage)
-        self.watchListView.tableView.backgroundView = imageView
+//        let backgroundImage = UIImage(named: "ss")
+//        let imageView = UIImageView(image: backgroundImage)
+//        self.watchListView.tableView.backgroundView = imageView
         watchListView.tableView.tableFooterView = UIView(frame: .zero)
-        imageView.contentMode = .scaleAspectFit
+//        imageView.contentMode = .scaleAspectFit
         
     }
   
@@ -105,7 +105,7 @@ extension WatchListController: UITableViewDataSource, UITableViewDelegate {
         let company = companies[indexPath.row]
         
         cell.configureCell(company: company)
-        cell.backgroundColor = .clear    //UIColor(white: 0.2, alpha: 0.3)
+//        cell.backgroundColor = .clear    //UIColor(white: 0.2, alpha: 0.3)
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
